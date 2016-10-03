@@ -12,8 +12,8 @@ TARGETS= practica1
 # encontrar ficheros para incluir mediante la opcion -I
 # la opcion -g sirve para permitir la depuraci�n
 #
-CFLAGS=    -g -I/usr/include -I.
-CXXFLAGS=  -g -I/usr/include -I.
+CFLAGS=    -g -I/usr/include -I$(INC).
+CXXFLAGS=  -g -I/usr/include -I$(INC).
 
 # banderas pra el enlazador
 # Se indica directorios donde encontrar las funciontecas con -L. Usando -l seguido del
@@ -27,8 +27,11 @@ CC = g++
 
 # definicion de objetos
 #
-OBJECTS= $(OBJ)practica1.o $(OBJ)escena.o $(OBJ)ejes.o
-SOURCES= $(SRC)practica1.cc $(SRC)escena.cc $(SRC)ejes.cc
+SOURCES  := $(wildcard $(SRC)*.cc)
+INCLUDES := $(wildcard $(INC)*.h)
+OBJECTS  := $(SOURCES:$(SRC)%.c=$(OBJ)%.o)
+
+#OBJECTS= $(OBJ)practica1.o $(OBJ)escena.o $(OBJ)ejes.o
 # orden que sera ejecutada por defecto
 #
 default : $(BIN)$(TARGETS)
@@ -37,15 +40,6 @@ default : $(BIN)$(TARGETS)
 #
 $(BIN)$(TARGETS) : $(OBJECTS)
 	$(CC) -o $@ $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
-
-# ************ Objetos *************
-$(OBJ)practica1.o: $(SRC)practica1.cc
-	$(CC) -c $(SRC)practica1.cc -o $(OBJ)practica1.o -I$(INC)
-$(OBJ)escena.o: $(SRC)escena.cc
-	$(CC) -c $(SRC)escena.cc -o $(OBJ)escena.o -I$(INC)
-$(OBJ)ejes.o: $(SRC)ejes.cc
-	$(CC) -c $(SRC)ejes.cc -o $(OBJ)ejes.o -I$(INC)
-
 
 #
 #
