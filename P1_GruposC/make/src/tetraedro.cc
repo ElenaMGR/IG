@@ -5,9 +5,6 @@
 #include "tetraedro.h"
 
 Tetraedro::Tetraedro(){
-
-}
-void Tetraedro::createGeometry(){
    // geometria del tetraedro
    vector<GLfloat> vertices;
    // vertice 0
@@ -47,7 +44,8 @@ void Tetraedro::createGeometry(){
 
    Obj3D::setMalla(vertices,triangulos);
 }
-void Tetraedro::draw(){
+
+void Tetraedro::draw(GLenum face, GLenum mode){
    glColor3f(1.0f, 0.0f, 0.0f);
-   Obj3D::draw();
+   Obj3D::draw(face, mode);
 }

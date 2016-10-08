@@ -7,6 +7,7 @@
 #include <GL/glut.h>
 #include "escena.h"
 
+GLenum modo = GL_LINE;
 
 Escena::Escena(){
     Front_plane=50;
@@ -14,7 +15,6 @@ Escena::Escena(){
     Observer_distance = 4*Front_plane;
     Observer_angle_x = Observer_angle_y=0;
     ejes.changeAxisSize(5000);
-    tetraedro.createGeometry();
 }
 
 void Escena::inicializar(int UI_window_width,int UI_window_height) {
@@ -35,7 +35,7 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 // Funcion que dibuja objetos en la escena
 //***************************************************************************
 void Escena::draw_objects() {
-   tetraedro.draw();
+   tetraedro.draw(GL_FRONT_AND_BACK, modo);
 }
 
 
@@ -52,7 +52,16 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
 
    std::cout << "Tecla " << Tecla1<< std::endl;
 	if (toupper(Tecla1)=='Q') return 1;
-	else return 0;
+	else if (toupper(Tecla1)=='L'){
+      modo = GL_LINE;
+      draw_objects();
+   } else if (toupper(Tecla1)=='S'){
+      modo = GL_FILL;
+      draw_objects();
+   }else if (toupper(Tecla1)=='P'){
+      modo = GL_POINT;
+      draw_objects();
+   }else return 0;
 }
 
 void Escena::teclaEspecial(int Tecla1,int x,int y) {

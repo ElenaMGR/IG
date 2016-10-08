@@ -20,7 +20,7 @@ public:
    /**
    * Método que dibuja el objeto3D
    */
-   void draw ();
+   void draw (GLenum face, GLenum mode);
 
 protected:
 

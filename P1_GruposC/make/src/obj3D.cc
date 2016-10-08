@@ -3,10 +3,12 @@
 #endif
 
 #include "obj3D.h"
+#include <iostream>
 
-void Obj3D::draw (){
+void Obj3D::draw (GLenum face, GLenum mode){
       glEnableClientState(GL_VERTEX_ARRAY);
       glVertexPointer (3, GL_FLOAT, 0, &(getMalla().vertices[0]));
+      glPolygonMode(face, mode);
       glDrawElements (GL_TRIANGLES, getMalla().triangulos.size(),GL_UNSIGNED_INT, &(getMalla().triangulos[0]));
 }
 
