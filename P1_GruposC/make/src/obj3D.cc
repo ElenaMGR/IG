@@ -1,13 +1,20 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-#include <GL/gl.h>
-#include <GL/glut.h>
+
 #include "obj3D.h"
 
+void Obj3D::draw (){
+      glEnableClientState(GL_VERTEX_ARRAY);
+      glVertexPointer (3, GL_FLOAT, 0, &(getMalla().vertices[0]));
+      glDrawElements (GL_TRIANGLES, getMalla().triangulos.size(),GL_UNSIGNED_INT, &(getMalla().triangulos[0]));
+}
 
-void Obj3D::draw (Malla *mesh){
-      glEnableClienteState (GL_VERTEX_ARRAY);
-      glVertexPointer (3, GL_FLOAT, 0, mesh->vertices);
-      glDrawElements (GL_TRIANGLES, 3*mesh->num_tri,GL_UNSIGNED_INT, mesh->triangulos);
+Malla Obj3D::getMalla(){
+   return mesh;
+}
+
+void Obj3D::setMalla(vector<GLfloat> v, vector<GLuint> t){
+   mesh.vertices = v;
+   mesh.triangulos = t;
 }

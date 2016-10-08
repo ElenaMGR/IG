@@ -2,12 +2,13 @@
 #define _OBJ3D_H
 
 #include <vector>
+#include <GL/glut.h>
+#include <GL/gl.h>
+using namespace std;
 
 struct Malla {
-   int num_ver;
-   int num_tri;
-   vector<float> vertices;
-   vector<float> triangulos;
+   vector<GLfloat> vertices;
+   vector<GLuint> triangulos;
 };
 
 class Obj3D {
@@ -16,7 +17,17 @@ private:
    Malla mesh;
 
 public:
-   void draw (Malla *mesh);
+   /**
+   * Método que dibuja el objeto3D
+   */
+   void draw ();
+
+protected:
+
+   Malla getMalla();
+
+   void setMalla(vector<GLfloat> v, vector<GLuint> t);
+
 };
 
 
