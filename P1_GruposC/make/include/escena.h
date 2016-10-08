@@ -3,6 +3,7 @@
 
 #include "ejes.h"
 #include "tetraedro.h"
+#include "cubo.h"
 
 class Escena {
 private:
@@ -10,6 +11,7 @@ private:
 #define AXIS_SIZE 5000
 Ejes ejes;
 Tetraedro tetraedro;
+Cubo cubo;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;

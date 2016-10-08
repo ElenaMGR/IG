@@ -13,7 +13,6 @@ private:
 
 public:
    Tetraedro();
-   void createGeometry();
    void draw(GLenum face, GLenum mode);
 
 };

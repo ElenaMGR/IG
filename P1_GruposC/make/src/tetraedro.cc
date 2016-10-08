@@ -46,6 +46,6 @@ Tetraedro::Tetraedro(){
 }
 
 void Tetraedro::draw(GLenum face, GLenum mode){
-   glColor3f(1.0f, 0.0f, 0.0f);
+   glColor3f(1.0f, 0.0f, 1.0f);
    Obj3D::draw(face, mode);
 }

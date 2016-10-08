@@ -36,6 +36,7 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 //***************************************************************************
 void Escena::draw_objects() {
    tetraedro.draw(GL_FRONT_AND_BACK, modo);
+   //cubo.draw(GL_FRONT_AND_BACK, modo);
 }
 
 
