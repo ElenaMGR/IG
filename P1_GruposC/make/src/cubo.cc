@@ -8,37 +8,37 @@ Cubo::Cubo(){
    // geometria del tetraedro
    vector<GLfloat> vertices;
    // vertice 0 - abajo fondo izquierdo
-   vertices.push_back(-20);
-   vertices.push_back(-20);
-   vertices.push_back(-20);
+   vertices.push_back(-30);
+   vertices.push_back(-30);
+   vertices.push_back(-30);
    // vertice 1 abajo fondo derecho
-   vertices.push_back(20);
-   vertices.push_back(-20);
-   vertices.push_back(-20);
+   vertices.push_back(30);
+   vertices.push_back(-30);
+   vertices.push_back(-30);
    // vertice 2 abajo izquierdo
-   vertices.push_back(-20);
-   vertices.push_back(-20);
-   vertices.push_back(20);
+   vertices.push_back(-30);
+   vertices.push_back(-30);
+   vertices.push_back(30);
    // vertice 3 abajo derecho
-   vertices.push_back(20);
-   vertices.push_back(-20);
-   vertices.push_back(20);
+   vertices.push_back(30);
+   vertices.push_back(-30);
+   vertices.push_back(30);
    // vertice 4 arriba fondo izquierdo
-   vertices.push_back(-20);
-   vertices.push_back(20);
-   vertices.push_back(-20);
+   vertices.push_back(-30);
+   vertices.push_back(30);
+   vertices.push_back(-30);
    // vertice 5 arriba fondo derecho
-   vertices.push_back(20);
-   vertices.push_back(20);
-   vertices.push_back(-20);
+   vertices.push_back(30);
+   vertices.push_back(30);
+   vertices.push_back(-30);
    // vertice 6 arriba izquierdo
-   vertices.push_back(-20);
-   vertices.push_back(20);
-   vertices.push_back(20);
+   vertices.push_back(-30);
+   vertices.push_back(30);
+   vertices.push_back(30);
    // vertice 7 arriba derecho
-   vertices.push_back(20);
-   vertices.push_back(20);
-   vertices.push_back(20);
+   vertices.push_back(30);
+   vertices.push_back(30);
+   vertices.push_back(30);
 
    vector<GLuint> triangulos;
    // cara 1 delante

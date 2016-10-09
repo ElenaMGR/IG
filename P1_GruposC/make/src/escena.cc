@@ -10,11 +10,12 @@
 GLenum modo = GL_LINE;
 
 Escena::Escena(){
-    Front_plane=50; 
+    Front_plane=50;
     Back_plane=2000;
     Observer_distance = 4*Front_plane;
     Observer_angle_x = Observer_angle_y=0;
     ejes.changeAxisSize(5000);
+    obj3D = cubo;
 }
 
 void Escena::inicializar(int UI_window_width,int UI_window_height) {

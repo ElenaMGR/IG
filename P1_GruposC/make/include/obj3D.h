@@ -7,6 +7,8 @@
 using namespace std;
 
 struct Malla {
+   int num_ver;
+   int num_tri;
    vector<GLfloat> vertices;
    vector<GLuint> triangulos;
 };
@@ -15,6 +17,8 @@ class Obj3D {
 
 private:
    Malla mesh;
+   void calculaNumVer();
+   void calculaNumTri();
 
 public:
    /**
