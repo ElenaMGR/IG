@@ -19,6 +19,9 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
       glDrawElements (GL_TRIANGLES, (3*getMalla().num_tri)/2, GL_UNSIGNED_INT, &(carasPares[0]));
       glColor3f(0.0f, 0.0f, 0.0f);
       glDrawElements (GL_TRIANGLES, (3*getMalla().num_tri)/2, GL_UNSIGNED_INT, &(carasImpares[0]));
+
+      //cout << "Caras pares: "<< (3*getMalla().num_tri)/2<< " - "<<carasPares.size()<<endl;
+      //cout << "Caras impares: "<< (3*getMalla().num_tri)/2<< " - "<<carasImpares.size()<<endl;
    }
 }
 
@@ -48,11 +51,6 @@ vector<GLuint> Obj3D::getCarasPares (bool par){
       caras.push_back(mesh.triangulos[i+1]);
       caras.push_back(mesh.triangulos[i+2]);
    }
-
-   /*cout << "Par: "<< par<<endl;
-   for ( int i=0 ; i<caras.size(); i++){
-      cout<< caras[i]<< endl;
-   }*/
 
    return caras;
 }
