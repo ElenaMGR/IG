@@ -50,45 +50,45 @@ Cubo::Cubo(){
    triangulos.push_back(3);
    triangulos.push_back(7);
    // cara 2 izquierda
-   triangulos.push_back(6);
+   triangulos.push_back(2);
    triangulos.push_back(4);
    triangulos.push_back(0);
 
    triangulos.push_back(2);
    triangulos.push_back(6);
-   triangulos.push_back(0);
+   triangulos.push_back(4);
    // cara 3 derecha
    triangulos.push_back(7);
    triangulos.push_back(3);
-   triangulos.push_back(5);
-
-   triangulos.push_back(5);
-   triangulos.push_back(3);
    triangulos.push_back(1);
+
+   triangulos.push_back(7);
+   triangulos.push_back(1);
+   triangulos.push_back(5);
    // cara 4 detras
+   triangulos.push_back(0);
+   triangulos.push_back(5);
+   triangulos.push_back(1);
+
    triangulos.push_back(4);
    triangulos.push_back(5);
    triangulos.push_back(0);
-
-   triangulos.push_back(0);
-   triangulos.push_back(5);
-   triangulos.push_back(1);
    // cara 5 abajo
-   triangulos.push_back(3);
+   triangulos.push_back(2);
    triangulos.push_back(0);
    triangulos.push_back(1);
 
    triangulos.push_back(2);
-   triangulos.push_back(0);
+   triangulos.push_back(1);
    triangulos.push_back(3);
    // cara 6 arriba
+   triangulos.push_back(4);
    triangulos.push_back(6);
    triangulos.push_back(7);
-   triangulos.push_back(5);
 
-   triangulos.push_back(6);
-   triangulos.push_back(5);
    triangulos.push_back(4);
+   triangulos.push_back(7);
+   triangulos.push_back(5);
 
    Obj3D::setMalla(vertices,triangulos);
 }

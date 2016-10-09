@@ -13,6 +13,7 @@
 #include <GL/glut.h>
 #include <ctype.h>
 #include "escena.h"
+#include <iostream>
 
 Escena *escena;
 
@@ -74,6 +75,22 @@ void special_keys(int Tecla1,int x,int y) {
 	glutPostRedisplay();
 }
 
+//***************************************************************************
+// Funcion llamada para mostrar menú con opciones
+
+//***************************************************************************
+
+void mostrarMenu() {
+	cout<< "Opciones: " <<endl;
+	cout<< "t: dibujar tetraedro" <<endl;
+	cout<< "c: dibujar cubo" <<endl;
+	cout<< "p: dibujar puntos" <<endl;
+	cout<< "l: dibujar lineas" <<endl;
+	cout<< "f: dibujar sólido" <<endl;
+	cout<< "a: dibujar ajedrez" <<endl;
+	cout<< "q: salir" <<endl;
+}
+
 
 
 //***************************************************************************
@@ -103,6 +120,7 @@ glutInitWindowSize(UI_window_width,UI_window_height);
 
 // llamada para crear la ventana, indicando el titulo
 glutCreateWindow("Práctica 1: Elena María Gómez Ríos");
+mostrarMenu();
 
 // asignación de la funcion llamada "dibujar" al evento de dibujo
 glutDisplayFunc(draw_scene);

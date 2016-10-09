@@ -24,13 +24,14 @@ public:
    /**
    * Método que dibuja el objeto3D
    */
-   void draw (GLenum face, GLenum mode);
+   void draw (GLenum face, GLenum mode, bool ajedrez);
 
 protected:
 
    Malla getMalla();
 
    void setMalla(vector<GLfloat> v, vector<GLuint> t);
+   vector<GLuint> getCarasPares (bool par);
 
 };
 

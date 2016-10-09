@@ -7,7 +7,6 @@
 #include <GL/glut.h>
 #include "escena.h"
 
-GLenum modo = GL_LINE;
 
 Escena::Escena(){
     Front_plane=50;
@@ -16,6 +15,8 @@ Escena::Escena(){
     Observer_angle_x = Observer_angle_y=0;
     ejes.changeAxisSize(5000);
     obj3D = cubo;
+    modo = GL_LINE;
+    ajedrez = false;
 }
 
 void Escena::inicializar(int UI_window_width,int UI_window_height) {
@@ -37,7 +38,7 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 // Funcion que dibuja objetos en la escena
 //***************************************************************************
 void Escena::draw_objects() {
-   obj3D.draw(GL_FRONT_AND_BACK, modo);
+   obj3D.draw(GL_FRONT_AND_BACK, modo, ajedrez);
 }
 
 
@@ -53,23 +54,16 @@ void Escena::dibujar() {
 int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
 
    std::cout << "Tecla " << Tecla1<< std::endl;
-	if (toupper(Tecla1)=='Q') return 1;
-	else if (toupper(Tecla1)=='L'){
-      modo = GL_LINE;
-      draw_objects();
-   } else if (toupper(Tecla1)=='S'){
-      modo = GL_FILL;
-      draw_objects();
-   }else if (toupper(Tecla1)=='P'){
-      modo = GL_POINT;
-      draw_objects();
-   }else if (toupper(Tecla1)=='C'){
-      obj3D=cubo;
-      draw_objects();
-   }else if (toupper(Tecla1)=='T'){
-      obj3D=tetraedro;
-      draw_objects();
-   }else return 0;
+   switch (toupper(Tecla1)) {
+    case 'Q': return 1; break;
+    case 'L': modo = GL_LINE; ajedrez = false; break;
+    case 'F': modo = GL_FILL; ajedrez = false; break;
+    case 'P': modo = GL_POINT; ajedrez = false; break;
+    case 'T': obj3D = tetraedro; break;
+    case 'C': obj3D = cubo; break;
+    case 'A': ajedrez = true; modo = GL_FILL; break;
+  }
+  return 0;
 }
 
 void Escena::teclaEspecial(int Tecla1,int x,int y) {

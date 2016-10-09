@@ -10,9 +10,15 @@ private:
 // tama�o de los ejes
 #define AXIS_SIZE 5000
 Ejes ejes;
+
+// Objetos
 Tetraedro tetraedro;
 Cubo cubo;
 Obj3D obj3D;
+
+//Variables de control
+GLenum modo;
+bool ajedrez;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;
