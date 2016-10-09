@@ -6,6 +6,7 @@
 #include <iostream>
 
 void Obj3D::draw (GLenum face, GLenum mode){
+      glColor3f(0.0f, 0.0f, 0.0f);
       glEnableClientState(GL_VERTEX_ARRAY);
       glVertexPointer (3, GL_FLOAT, 0, &(getMalla().vertices[0]));
       glPolygonMode(face, mode);

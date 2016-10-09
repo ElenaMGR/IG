@@ -12,6 +12,7 @@ private:
 Ejes ejes;
 Tetraedro tetraedro;
 Cubo cubo;
+Obj3D obj3D;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;

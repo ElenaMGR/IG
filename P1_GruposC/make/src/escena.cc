@@ -10,7 +10,7 @@
 GLenum modo = GL_LINE;
 
 Escena::Escena(){
-    Front_plane=50;
+    Front_plane=50; 
     Back_plane=2000;
     Observer_distance = 4*Front_plane;
     Observer_angle_x = Observer_angle_y=0;
@@ -22,6 +22,7 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 	glClearColor(1,1,1,1);// se indica cual sera el color para limpiar la ventana	(r,v,a,al)
 
 	glEnable(GL_DEPTH_TEST);	// se habilita el z-bufer
+   glEnable (GL_CULL_FACE);
 
 	this->change_projection();
 	Width=UI_window_width/10;
@@ -35,8 +36,7 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 // Funcion que dibuja objetos en la escena
 //***************************************************************************
 void Escena::draw_objects() {
-   tetraedro.draw(GL_FRONT_AND_BACK, modo);
-   //cubo.draw(GL_FRONT_AND_BACK, modo);
+   obj3D.draw(GL_FRONT_AND_BACK, modo);
 }
 
 
@@ -61,6 +61,12 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
       draw_objects();
    }else if (toupper(Tecla1)=='P'){
       modo = GL_POINT;
+      draw_objects();
+   }else if (toupper(Tecla1)=='C'){
+      obj3D=cubo;
+      draw_objects();
+   }else if (toupper(Tecla1)=='T'){
+      obj3D=tetraedro;
       draw_objects();
    }else return 0;
 }

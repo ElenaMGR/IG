@@ -13,7 +13,6 @@ private:
 
 public:
    Cubo();
-   void draw(GLenum face, GLenum mode);
 
 };
 #endif
