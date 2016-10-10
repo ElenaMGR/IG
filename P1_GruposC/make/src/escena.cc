@@ -61,6 +61,7 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case 'P': modo = GL_POINT; ajedrez = false; break;
     case 'T': obj3D = tetraedro; break;
     case 'C': obj3D = cubo; break;
+    case 'O': obj3D = octaedro; break;
     case 'A': ajedrez = true; modo = GL_FILL; break;
   }
   return 0;

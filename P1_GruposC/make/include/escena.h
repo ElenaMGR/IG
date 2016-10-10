@@ -4,6 +4,7 @@
 #include "ejes.h"
 #include "tetraedro.h"
 #include "cubo.h"
+#include "octaedro.h"
 
 class Escena {
 private:
@@ -14,6 +15,7 @@ Ejes ejes;
 // Objetos
 Tetraedro tetraedro;
 Cubo cubo;
+Octaedro octaedro;
 Obj3D obj3D;
 
 //Variables de control

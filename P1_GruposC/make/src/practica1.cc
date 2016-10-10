@@ -84,6 +84,7 @@ void mostrarMenu() {
 	cout<< "Opciones: " <<endl;
 	cout<< "t: dibujar tetraedro" <<endl;
 	cout<< "c: dibujar cubo" <<endl;
+	cout<< "o: dibujar octaedro" <<endl;
 	cout<< "p: dibujar puntos" <<endl;
 	cout<< "l: dibujar lineas" <<endl;
 	cout<< "f: dibujar sólido" <<endl;
