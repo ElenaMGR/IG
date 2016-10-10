@@ -65,6 +65,5 @@ superclean:
 #
 tgz:
 	rm -f $(OBJ)*.o
-	rm *~
 	rm -f $(BIN)$(TARGETS)
 	tar -zcvf $(TARGETS).tgz *

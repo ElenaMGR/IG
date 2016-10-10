@@ -1,0 +1,18 @@
+
+Práctica realizada por: Elena María Gómez Ríos
+Grupo: C1
+DNI: 76624656 H
+
+Instrucciones:
+Tecla :  Acción
+
+Figuras
+C : Dibuja un cubo
+T : Dibuja un tetraedro
+O : Dibuja un octaedro
+
+Visualización
+F : Relleno
+L : Lineas
+P : Puntos
+A : Ajedrez
