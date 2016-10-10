@@ -7,8 +7,6 @@
 using namespace std;
 
 struct Malla {
-   int num_ver;
-   int num_tri;
    vector<GLfloat> vertices;
    vector<GLuint> triangulos;
 };
@@ -17,8 +15,8 @@ class Obj3D {
 
 private:
    Malla mesh;
-   void calculaNumVer();
-   void calculaNumTri();
+   vector<GLuint> carasPares;
+   vector<GLuint> carasImpares;
 
 public:
    /**
@@ -27,7 +25,6 @@ public:
    void draw (GLenum face, GLenum mode, bool ajedrez);
 
 protected:
-
    void setMalla(vector<GLfloat> v, vector<GLuint> t);
    vector<GLuint> getCarasPares (bool par);
 

@@ -11,17 +11,12 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
    glPolygonMode(face, mode);
    if (!ajedrez){
       glColor3f(0.0f, 0.0f, 0.0f);
-      glDrawElements (GL_TRIANGLES, 3*mesh.num_tri,GL_UNSIGNED_INT, &(mesh.triangulos[0]));
+      glDrawElements (GL_TRIANGLES, mesh.triangulos.size(),GL_UNSIGNED_INT, &(mesh.triangulos[0]));
    }else{
-      vector<GLuint> carasPares = getCarasPares(true);
-      vector<GLuint> carasImpares = getCarasPares(false);
       glColor3f(1.0f, 0.0f, 1.0f);
-      glDrawElements (GL_TRIANGLES, (3*mesh.num_tri)/2, GL_UNSIGNED_INT, &(carasPares[0]));
+      glDrawElements (GL_TRIANGLES, carasPares.size(), GL_UNSIGNED_INT, &(carasPares[0]));
       glColor3f(0.0f, 0.0f, 0.0f);
-      glDrawElements (GL_TRIANGLES, (3*mesh.num_tri)/2, GL_UNSIGNED_INT, &(carasImpares[0]));
-
-      //cout << "Caras pares: "<< (3*mesh.num_tri)/2<< " - "<<carasPares.size()<<endl;
-      //cout << "Caras impares: "<< (3*mesh.num_tri)/2<< " - "<<carasImpares.size()<<endl;
+      glDrawElements (GL_TRIANGLES, carasImpares.size(), GL_UNSIGNED_INT, &(carasImpares[0]));
    }
    glDisableClientState(GL_VERTEX_ARRAY);
 }
@@ -29,16 +24,10 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
 void Obj3D::setMalla(vector<GLfloat> v, vector<GLuint> t){
    mesh.vertices = v;
    mesh.triangulos = t;
-   calculaNumVer();
-   calculaNumTri();
+   carasPares = getCarasPares(true);
+   carasImpares = getCarasPares(false);
 }
 
-void Obj3D::calculaNumVer(){
-   mesh.num_ver = (mesh.vertices.size()) / 3;
-}
-void Obj3D::calculaNumTri(){
-   mesh.num_tri = (mesh.triangulos.size()) / 3;
-}
 
 vector<GLuint> Obj3D::getCarasPares (bool par){
    vector<GLuint> caras;
@@ -48,9 +37,5 @@ vector<GLuint> Obj3D::getCarasPares (bool par){
       caras.push_back(mesh.triangulos[i+1]);
       caras.push_back(mesh.triangulos[i+2]);
    }
-   /*for (int i= 0 ; i<caras.size(); i++){
-      cout<<caras[i]<< endl;
-   }*/
-
    return caras;
 }
