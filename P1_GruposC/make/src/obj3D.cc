@@ -38,3 +38,9 @@ vector<GLuint> Obj3D::getCarasPares (bool par){
    }
    return caras;
 }
+
+void Obj3D::moverObjeto (){
+   for (int i=0; i<mesh.vertices.size(); i++){
+      mesh.vertices[i]=mesh.vertices[i]+35;
+   }
+}

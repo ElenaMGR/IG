@@ -1,3 +1,6 @@
 *.o
 P1_GruposC/make/bin/practica1
 *.tgz
+P1_GruposC/make/PLY/*.ply
+*.exe
+*.zip

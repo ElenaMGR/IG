@@ -91,4 +91,5 @@ Cubo::Cubo(){
    triangulos.push_back(5);
 
    Obj3D::setMalla(vertices,triangulos);
+   //moverObjeto();
 }

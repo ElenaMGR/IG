@@ -27,6 +27,7 @@ public:
 protected:
    void setMalla(vector<GLfloat> v, vector<GLuint> t);
    vector<GLuint> getCarasPares (bool par);
+   void moverObjeto ();
 
 };
 
