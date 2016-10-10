@@ -45,8 +45,8 @@ $(BIN)$(TARGETS) : $(OBJECTS)
 #
 
 clean:
-	rm -f *.o
-	rm -f $(TARGETS)
+	rm -f $(OBJ)*.o
+	rm -f $(BIN)$(TARGETS)
 
 #
 #
@@ -57,14 +57,14 @@ redo:
 #
 #
 superclean:
-	rm -f *.o
+	rm -f $(OBJ)*.o
 	rm *~
-	rm -f $(TARGETS)
+	rm -f $(BIN)$(TARGETS)
 
 #
 #
 tgz:
-	rm -f *.o
+	rm -f $(OBJ)*.o
 	rm *~
-	rm -f $(TARGETS)
+	rm -f $(BIN)$(TARGETS)
 	tar -zcvf $(TARGETS).tgz *

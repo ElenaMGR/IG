@@ -10,29 +10,29 @@ Octaedro::Octaedro(){
    vector<GLfloat> vertices;
 
    // vertice 0
-   vertices.push_back(40);
+   vertices.push_back(50);
    vertices.push_back(0);
    vertices.push_back(0);
    // vertice 1
-   vertices.push_back(-40);
+   vertices.push_back(-50);
    vertices.push_back(0);
    vertices.push_back(0);
    // vertice 2
    vertices.push_back(0);
-   vertices.push_back(40);
+   vertices.push_back(50);
    vertices.push_back(0);
    // vertice 3
    vertices.push_back(0);
-   vertices.push_back(-40);
+   vertices.push_back(-50);
    vertices.push_back(0);
    // vertice 4
    vertices.push_back(0);
    vertices.push_back(0);
-   vertices.push_back(40);
+   vertices.push_back(50);
    // vertice 5
    vertices.push_back(0);
    vertices.push_back(0);
-   vertices.push_back(-40);
+   vertices.push_back(-50);
 
    vector<GLuint> triangulos;
    //Caras arriba
@@ -54,22 +54,22 @@ Octaedro::Octaedro(){
    triangulos.push_back(5);
 
    //Caras abajo
-   // cara 1 fondo
-   triangulos.push_back(1);
-   triangulos.push_back(5);
-   triangulos.push_back(3);
-   // cara 2 izquierda
+   // cara 1 izquierda
    triangulos.push_back(4);
    triangulos.push_back(1);
    triangulos.push_back(3);
-   // cara 3 centro
+   // cara 2 centro
    triangulos.push_back(4);
    triangulos.push_back(3);
    triangulos.push_back(0);
-   // cara 4 derecha
+   // cara 3 derecha
    triangulos.push_back(0);
    triangulos.push_back(3);
    triangulos.push_back(5);
+   // cara 4 fondo
+   triangulos.push_back(1);
+   triangulos.push_back(5);
+   triangulos.push_back(3);
 
    Obj3D::setMalla(vertices,triangulos);
 }
