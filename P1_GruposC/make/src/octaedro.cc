@@ -3,7 +3,6 @@
 #endif
 
 #include "octaedro.h"
-#include <iostream>
 
 Octaedro::Octaedro(){
    // geometria del octaedro

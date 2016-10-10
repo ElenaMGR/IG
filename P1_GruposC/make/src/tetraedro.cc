@@ -3,7 +3,6 @@
 #endif
 
 #include "tetraedro.h"
-#include <iostream>
 
 Tetraedro::Tetraedro(){
    // geometria del tetraedro

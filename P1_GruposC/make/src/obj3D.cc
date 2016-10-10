@@ -3,7 +3,6 @@
 #endif
 
 #include "obj3D.h"
-#include <iostream>
 
 void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
    glEnableClientState(GL_VERTEX_ARRAY);

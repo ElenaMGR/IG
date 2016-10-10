@@ -4,7 +4,6 @@
 #include "obj3D.h"
 #include <GL/glut.h>
 #include <GL/gl.h>
-using namespace std;
 
 class Cubo : public Obj3D {
 
