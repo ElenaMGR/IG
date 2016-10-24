@@ -14,10 +14,11 @@ struct Malla {
 };
 
 class Obj3D {
-
 private:
    Malla mesh;
-
+   vector<GLfloat> color;
+   vector<GLfloat> colorPares;
+   
 public:
    /**
    * Método que dibuja el objeto3D
@@ -28,7 +29,9 @@ protected:
    void setMalla(vector<GLfloat> v, vector<GLuint> t);
    vector<GLuint> getCarasPares (bool par);
    void moverObjeto ();
-
+   void asignarColor(float r, float g, float b);
+   void asignarColorCarasPares(float r, float g, float b);
+   void centrarEscalar();
 };
 
 

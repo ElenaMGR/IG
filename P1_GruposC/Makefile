@@ -23,7 +23,7 @@ LDFLAGS=  -lGLU -lGL -lglut
 
 # definicion del compilador
 #
-CC = g++
+CC = g++ -std=c++11
 
 # definicion de objetos
 #
