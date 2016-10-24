@@ -14,7 +14,7 @@ Escena::Escena(){
     Observer_distance = 4*Front_plane;
     Observer_angle_x = Observer_angle_y=0;
     ejes.changeAxisSize(5000);
-    obj3D = cubo;
+    obj3D = objPly;
     modo = GL_LINE;
     ajedrez = false;
 }
@@ -63,6 +63,7 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case 'C': obj3D = cubo; break;
     case 'O': obj3D = octaedro; break;
     case 'A': ajedrez = true; modo = GL_FILL; break;
+    case 'Y': obj3D = objPly; break;
   }
   return 0;
 }

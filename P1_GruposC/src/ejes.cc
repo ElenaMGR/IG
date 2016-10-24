@@ -57,6 +57,4 @@ void Ejes::drawArray(){
 	glEnableClientState(GL_COLOR_ARRAY);
 	glColorPointer(3, GL_FLOAT, 0, colorArray );
 	glDrawArrays( GL_LINES, 0, 6 ) ;
-   glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_COLOR_ARRAY);
 }

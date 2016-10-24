@@ -1,5 +1,5 @@
 *.o
-P1_GruposC/bin/practica1
+P1_GruposC/bin/*
 *.tgz
 P1_GruposC/PLY/*
 *.zip

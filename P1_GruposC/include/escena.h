@@ -5,6 +5,7 @@
 #include "tetraedro.h"
 #include "cubo.h"
 #include "octaedro.h"
+#include "objPLY.h"
 
 class Escena {
 private:
@@ -17,6 +18,7 @@ Tetraedro tetraedro;
 Cubo cubo;
 Octaedro octaedro;
 Obj3D obj3D;
+ObjPLY objPly;
 
 //Variables de control
 GLenum modo;

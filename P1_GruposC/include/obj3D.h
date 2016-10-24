@@ -9,14 +9,14 @@ using namespace std;
 struct Malla {
    vector<GLfloat> vertices;
    vector<GLuint> triangulos;
+   vector<GLuint> carasPares;
+   vector<GLuint> carasImpares;
 };
 
 class Obj3D {
 
 private:
    Malla mesh;
-   vector<GLuint> carasPares;
-   vector<GLuint> carasImpares;
 
 public:
    /**
