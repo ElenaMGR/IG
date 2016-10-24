@@ -7,7 +7,7 @@
 void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
    glEnableClientState(GL_COLOR_ARRAY);
    glEnableClientState(GL_VERTEX_ARRAY);
-   glColorPointer(3, GL_FLOAT, 0, &(color[0]));
+   glColorPointer(3, GL_FLOAT, 0, &(mesh.color[0]));
    glVertexPointer (3, GL_FLOAT, 0, &(mesh.vertices[0]));
    glPolygonMode(face, mode);
    if (!ajedrez){
@@ -17,7 +17,7 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
       //glColor3f(0.0f, 0.0f, 0.0f);
       glDrawElements (GL_TRIANGLES, mesh.carasImpares.size(), GL_UNSIGNED_INT, &(mesh.carasImpares[0]));
       //glColor3f(1.0f, 0.0f, 1.0f);
-      glColorPointer(3, GL_FLOAT, 0, &(colorPares[0]));
+      glColorPointer(3, GL_FLOAT, 0, &(mesh.colorPares[0]));
       glDrawElements (GL_TRIANGLES, mesh.carasPares.size(), GL_UNSIGNED_INT, &(mesh.carasPares[0]));
    }
 }
@@ -52,20 +52,20 @@ void Obj3D::moverObjeto (){
 
 
 void Obj3D::asignarColor(float r, float g, float b){
-   color.clear();
+   mesh.color.clear();
    for (int i=0; i<mesh.vertices.size(); i+=3){
-      color.push_back(r);
-      color.push_back(g);
-      color.push_back(b);
+      mesh.color.push_back(r);
+      mesh.color.push_back(g);
+      mesh.color.push_back(b);
    }
 }
 
 void Obj3D::asignarColorCarasPares(float r, float g, float b){
-   colorPares.clear();
+   mesh.colorPares.clear();
    for (int i=0; i<mesh.carasPares.size(); i+=3){
-      colorPares.push_back(r);
-      colorPares.push_back(g);
-      colorPares.push_back(b);
+      mesh.colorPares.push_back(r);
+      mesh.colorPares.push_back(g);
+      mesh.colorPares.push_back(b);
    }
 }
 

@@ -11,14 +11,13 @@ struct Malla {
    vector<GLuint> triangulos;
    vector<GLuint> carasPares;
    vector<GLuint> carasImpares;
+   vector<GLfloat> color;
+   vector<GLfloat> colorPares;
 };
 
 class Obj3D {
 private:
    Malla mesh;
-   vector<GLfloat> color;
-   vector<GLfloat> colorPares;
-   
 public:
    /**
    * Método que dibuja el objeto3D
