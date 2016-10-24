@@ -36,7 +36,7 @@ Num_lines=0;
 //
 //******************************************************************************
 
-int _file_ply::open(char *File_name)
+int _file_ply::open(const char *File_name)
 {
 
 if ((File=fopen(File_name,"r"))==NULL)
@@ -77,8 +77,8 @@ if (!feof(File))
 	Num_lines++;
 //  printf("%d:%s",Num_lines,Buffer);
 	return(0);
-	}	
-return(-1);	
+	}
+return(-1);
 }
 
 //******************************************************************************
@@ -276,7 +276,7 @@ return(0);
 void _file_ply::error(const char *Error)
 {
 
-printf("Error: %s. Stop in line %d\n",Error,Num_lines);         
+printf("Error: %s. Stop in line %d\n",Error,Num_lines);
 exit(-1);
 }
 
@@ -309,6 +309,6 @@ while (!(Token_table[i].Text=="zzzzzzzz"))
 	if (Token_table[i].Text==Aux_token) break;
 	i++;
 	}
-//getchar();	
+//getchar();
 return(i);
 }

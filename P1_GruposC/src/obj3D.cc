@@ -70,7 +70,7 @@ void Obj3D::asignarColorCarasPares(float r, float g, float b){
 }
 
 void Obj3D::centrarEscalar(){
-   float cx,cy,cz,sx,sy,sz;
+   float cx,cy,cz;
    //Asingo por defecto el valor del primer vertice
    float minx = mesh.vertices[0] ,maxx = mesh.vertices[0];
    float miny = mesh.vertices[1], maxy = mesh.vertices[1];
@@ -97,14 +97,14 @@ void Obj3D::centrarEscalar(){
 
 
    for (int i=0; i<mesh.vertices.size(); i+=3){
-      mesh.vertices[i]=mesh.vertices[i]+cx;
-      mesh.vertices[i+1]=mesh.vertices[i+1]+cy;
-      mesh.vertices[i+2]=mesh.vertices[i+2]+cz;
+      mesh.vertices[i]=mesh.vertices[i]-cx;
+      mesh.vertices[i+1]=mesh.vertices[i+1]-cy;
+      mesh.vertices[i+2]=mesh.vertices[i+2]-cz;
    }
 
    //Calculamos el escalado
    for (int i=0; i<mesh.vertices.size(); i++){
-      mesh.vertices[i]=mesh.vertices[i]*(100/(maxx-minx));
+      mesh.vertices[i]=mesh.vertices[i]*(90/(maxx-minx));
    }
 
 }

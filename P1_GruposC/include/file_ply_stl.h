@@ -41,7 +41,7 @@ class _file_ply
 public:
 
 				_file_ply();
-int open(char *File_name);
+int open(const char *File_name);
 int read(vector<float> &Vertices,vector<int> &Faces);
 int create(char *File_name);
 //int write(vector<float> &Vertices,vector<int> &Faces);

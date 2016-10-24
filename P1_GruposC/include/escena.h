@@ -53,5 +53,8 @@ public:
 	// Interacci�n con la escena
 	int teclaPulsada(unsigned char Tecla1,int x,int y) ;
 	void teclaEspecial(int Tecla1,int x,int y);
+
+	//Lee objeto ply
+	string leerObjeto();
 };
 #endif

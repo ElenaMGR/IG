@@ -6,12 +6,12 @@
 
 
 ObjPLY::ObjPLY(){
-   leerPLY();
 }
 
-void ObjPLY::leerPLY(){
+void ObjPLY::leerPLY(string nombre){
    _file_ply filePly;
-   filePly.open("./PLY/beethoven.ply");
+   string nomply = "./PLY/"+nombre+".ply";
+   filePly.open(nomply.c_str());
    vector<float> v;
    vector<int> t;
    filePly.read(v,t);

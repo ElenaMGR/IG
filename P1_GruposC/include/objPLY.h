@@ -5,14 +5,15 @@
 #include "file_ply_stl.h"
 #include <GL/glut.h>
 #include <GL/gl.h>
+#include <string>
 
 class ObjPLY : public Obj3D {
 
 private:
-   void leerPLY();
 
 public:
    ObjPLY();
+   void leerPLY(string nombre);
 };
 
 #endif
