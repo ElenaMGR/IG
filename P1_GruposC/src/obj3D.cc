@@ -29,7 +29,6 @@ void Obj3D::setMalla(vector<GLfloat> v, vector<GLuint> t){
    mesh.carasImpares = getCarasPares(false);
    asignarColor(0.0,0.0,0.0);
    asignarColorCarasPares(1.0, 0.0, 1.0);
-   centrarEscalar();
 }
 
 
@@ -95,7 +94,7 @@ void Obj3D::centrarEscalar(){
    cy=(miny+maxy)/2;
    cz=(minz+maxz)/2;
 
-
+   // Centro en el origen
    for (int i=0; i<mesh.vertices.size(); i+=3){
       mesh.vertices[i]=mesh.vertices[i]-cx;
       mesh.vertices[i+1]=mesh.vertices[i+1]-cy;

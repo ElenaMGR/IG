@@ -12,10 +12,10 @@ void ObjPLY::leerPLY(string nombre){
    _file_ply filePly;
    string nomply = "./PLY/"+nombre+".ply";
    filePly.open(nomply.c_str());
-   vector<float> v;
-   vector<int> t;
    filePly.read(v,t);
+}
 
+void ObjPLY::createGeometry(){
    vector<GLfloat> vertices;
    for (int i=0; i<v.size();i++){
       vertices.push_back(v[i]);
@@ -27,4 +27,5 @@ void ObjPLY::leerPLY(string nombre){
    }
 
    Obj3D::setMalla(vertices,triangulos);
+   centrarEscalar();
 }

@@ -9,11 +9,14 @@
 
 class ObjPLY : public Obj3D {
 
-private:
+protected:
+   vector<float> v;
+   vector<int> t;
 
 public:
    ObjPLY();
    void leerPLY(string nombre);
+   void createGeometry();
 };
 
 #endif

@@ -15,6 +15,7 @@ Escena::Escena(){
     Observer_angle_x = Observer_angle_y=0;
     ejes.changeAxisSize(5000);
     objPly.leerPLY("beethoven");
+    objPly.createGeometry();
     obj3D = objPly;
     modo = GL_LINE;
     ajedrez = false;
@@ -72,7 +73,8 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case 'C': obj3D = cubo; break;
     case 'O': obj3D = octaedro; break;
     case 'A': ajedrez = true; modo = GL_FILL; break;
-    case 'Y': objPly.leerPLY(leerObjeto()) ;obj3D = objPly; break;
+    case 'Y': objPly.leerPLY(leerObjeto()); objPly.createGeometry() ;obj3D = objPly; break;
+    case 'R': objRevolucion.leerPLY(leerObjeto()) ; objRevolucion.createGeometry() ;obj3D = objRevolucion; break;
   }
   return 0;
 }
