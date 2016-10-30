@@ -4,6 +4,7 @@
 #include "objPLY.h"
 #include <GL/glut.h>
 #include <GL/gl.h>
+#include <math.h>
 
 class ObjRevolucion : public ObjPLY {
 
@@ -11,6 +12,8 @@ private:
 
 public:
    ObjRevolucion();
+   void createGeometry(int repeticiones, bool tapa, bool base);
+   int leerObjetoRev();
 };
 
 #endif

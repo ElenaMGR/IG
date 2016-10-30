@@ -29,3 +29,10 @@ void ObjPLY::createGeometry(){
    Obj3D::setMalla(vertices,triangulos);
    centrarEscalar();
 }
+
+string ObjPLY::leerObjeto(){
+   string input;
+   cout<<"Introduce nombre de objeto PLY: "<<endl;
+   getline(std::cin, input);
+   return input;
+}

@@ -6,6 +6,7 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <string>
+#include <iostream>
 
 class ObjPLY : public Obj3D {
 
@@ -17,6 +18,7 @@ public:
    ObjPLY();
    void leerPLY(string nombre);
    void createGeometry();
+   string leerObjeto();
 };
 
 #endif
