@@ -12,6 +12,7 @@ private:
 
 public:
    ObjRevolucion();
+   ObjRevolucion(vector<float> vec);
    void createGeometry(int repeticiones, bool tapa, bool base);
    int leerObjetoRev();
 };

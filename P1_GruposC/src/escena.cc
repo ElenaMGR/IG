@@ -88,6 +88,12 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case 'V': tapa = !tapa; objRevolucion.createGeometry(rev,tapa,base) ;
                obj3D = objRevolucion;
                break;
+    case 'Z': vector<float> v = {30,-30,30,30,30,30};
+               ObjRevolucion objRevolucion1(v);
+               rev = objRevolucion1.leerObjetoRev();
+               objRevolucion1.createGeometry(rev,tapa,base) ;
+               obj3D = objRevolucion1;
+               break;
   }
   return 0;
 }

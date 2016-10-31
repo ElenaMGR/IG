@@ -8,6 +8,10 @@
 ObjRevolucion::ObjRevolucion(){
 }
 
+ObjRevolucion::ObjRevolucion(vector<float> vec){
+   v=vec;
+}
+
 void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base){
    vector<GLfloat> vertices;
    vector<GLuint> triangulos;
