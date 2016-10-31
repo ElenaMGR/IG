@@ -9,27 +9,48 @@ ObjRevolucion::ObjRevolucion(){
 }
 
 void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base){
-   double angulo = (2.0 * M_PI) / repeticiones;
-
    vector<GLfloat> vertices;
+   vector<GLuint> triangulos;
+   double angulo = (2.0 * M_PI) / repeticiones;
+   vector<float> vaux = v;
+   float puntobase;
+   float puntotapa;
+
+   //Base
+   //Si hay base la borro y la guardo en variable
+   if( (v[0] == 0) && v[2] == 0){
+      puntobase = v[1];
+      vaux.erase(vaux.begin(), vaux.begin()+3);
+   }
+
+   //Tapa
+   //Si hay tapa la borro y la guardo en variable
+   if( (v[v.size()-3] == 0) && v[v.size()-1] == 0){
+      puntotapa = v[v.size()-2];
+      vaux.erase(vaux.end()-3, vaux.end());
+   }
+
+
+   //Vertices
+
    //Rotación en el eje y
-   for (int i=0; i<v.size();i+=3){
+   for (int i=0; i<vaux.size();i+=3){
       // Si no esta en el eje genero las repeticiones
-      if( (v[i] != 0) || v[i+2] != 0){
+      if( (vaux[i] != 0) || vaux[i+2] != 0){
          for (int j=0; j< repeticiones; j++){
-            vertices.push_back( cos ( j * angulo) * v[i] +  sin (j * angulo) * v[i+2] );
-            vertices.push_back( v[i+1] );
-            vertices.push_back( -sin (j * angulo) * v[i] + cos (j * angulo) * v[i+2] );
+            vertices.push_back( cos ( j * angulo) * vaux[i] +  sin (j * angulo) * vaux[i+2] );
+            vertices.push_back( vaux[i+1] );
+            vertices.push_back( -sin (j * angulo) * vaux[i] + cos (j * angulo) * vaux[i+2] );
          }
       }else{
-         vertices.push_back( v[i] );
-         vertices.push_back( v[i+1] );
-         vertices.push_back( v[i+2] );
+         vertices.push_back( vaux[i] );
+         vertices.push_back( vaux[i+1] );
+         vertices.push_back( vaux[i+2] );
       }
    }
 
-   vector<GLuint> triangulos;
-   int numVer = v.size()/3;
+   //Triangulos
+   int numVer = vaux.size()/3;
    for (int i=0; i < numVer -1; i++){
       for (int j=0; j < repeticiones; j++){
          triangulos.push_back(i*repeticiones + j);
@@ -51,17 +72,21 @@ void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base){
          vertices.push_back( 0.0 );
          vertices.push_back( v[v.size()-2] );
          vertices.push_back( 0.0 );
+      }else{
+         vertices.push_back( 0.0 );
+         vertices.push_back( puntotapa );
+         vertices.push_back( 0.0 );
+      }
 
-         int ultimo = vertices.size()/3 - 1;
-         for (int i=1; i<=repeticiones; i++){
-            if (i==repeticiones){
-               triangulos.push_back(ultimo - 1);
-            }else{
-               triangulos.push_back(ultimo - i - 1);
-            }
-            triangulos.push_back(ultimo - i);
-            triangulos.push_back(ultimo);
+      int ultimo = vertices.size()/3 - 1;
+      for (int i=1; i<=repeticiones; i++){
+         if (i==repeticiones){
+            triangulos.push_back(ultimo - 1);
+         }else{
+            triangulos.push_back(ultimo - i - 1);
          }
+         triangulos.push_back(ultimo - i);
+         triangulos.push_back(ultimo);
       }
    }
 
@@ -72,13 +97,17 @@ void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base){
          vertices.push_back( 0.0 );
          vertices.push_back( v[1] );
          vertices.push_back( 0.0 );
+      }else{
+         vertices.push_back( 0.0 );
+         vertices.push_back( puntobase );
+         vertices.push_back( 0.0 );
+      }
 
-         int ultimo = vertices.size()/3 - 1;
-         for (int i=0; i<repeticiones; i++){
-            triangulos.push_back((i+1) % repeticiones);
-            triangulos.push_back(i);
-            triangulos.push_back(ultimo);
-         }
+      int ultimo = vertices.size()/3 - 1;
+      for (int i=0; i<repeticiones; i++){
+         triangulos.push_back((i+1) % repeticiones);
+         triangulos.push_back(i);
+         triangulos.push_back(ultimo);
       }
    }
 

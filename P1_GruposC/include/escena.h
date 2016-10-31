@@ -25,6 +25,8 @@ ObjRevolucion objRevolucion;
 //Variables de control
 GLenum modo;
 bool ajedrez;
+bool tapa, base;
+int rev;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;

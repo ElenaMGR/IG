@@ -19,6 +19,11 @@ Escena::Escena(){
     obj3D = objPly;
     modo = GL_LINE;
     ajedrez = false;
+    tapa=true;
+    base=true;
+    rev=20;
+    objRevolucion.leerPLY("peon");
+    objRevolucion.createGeometry(rev,tapa,base);
 }
 
 void Escena::inicializar(int UI_window_width,int UI_window_height) {
@@ -68,7 +73,21 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case 'O': obj3D = octaedro; break;
     case 'A': ajedrez = true; modo = GL_FILL; break;
     case 'Y': objPly.leerPLY(objPly.leerObjeto()); objPly.createGeometry() ;obj3D = objPly; break;
-    case 'R': objRevolucion.leerPLY(objRevolucion.leerObjeto()) ; objRevolucion.createGeometry(objRevolucion.leerObjetoRev(),true,true) ;obj3D = objRevolucion; break;
+    case 'R': objRevolucion.leerPLY(objRevolucion.leerObjeto()) ;
+               rev = objRevolucion.leerObjetoRev();
+               objRevolucion.createGeometry(rev,tapa,base) ;
+               obj3D = objRevolucion;
+               break;
+    case 'X': rev = objRevolucion.leerObjetoRev();
+               objRevolucion.createGeometry(rev,tapa,base) ;
+               obj3D = objRevolucion;
+               break;
+    case 'B': base = !base; objRevolucion.createGeometry(rev,tapa,base) ;
+               obj3D = objRevolucion;
+               break;
+    case 'V': tapa = !tapa; objRevolucion.createGeometry(rev,tapa,base) ;
+               obj3D = objRevolucion;
+               break;
   }
   return 0;
 }

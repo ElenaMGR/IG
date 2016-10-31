@@ -83,6 +83,10 @@ void special_keys(int Tecla1,int x,int y) {
 void mostrarMenu() {
 	cout<< "Opciones: " <<endl;
 	cout<< "y: dibujar Objeto PLY" <<endl;
+	cout<< "r: dibujar objeto revolución mediante PLY" <<endl;
+	cout<< "x: cambiar el numero de revoluciones" <<endl;
+	cout<< "b: pintar o quitar la base del objeto de revolución" <<endl;
+	cout<< "v: pintar o quitar la tapa del objeto de revolución" <<endl;
 	cout<< "t: dibujar tetraedro" <<endl;
 	cout<< "c: dibujar cubo" <<endl;
 	cout<< "o: dibujar octaedro" <<endl;
@@ -92,7 +96,6 @@ void mostrarMenu() {
 	cout<< "a: dibujar ajedrez" <<endl;
 	cout<< "q: salir" <<endl;
 }
-
 
 
 //***************************************************************************
