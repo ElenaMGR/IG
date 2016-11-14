@@ -27,6 +27,7 @@ GLenum modo;
 bool ajedrez;
 bool tapa, base;
 int rev;
+double angulo;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;
