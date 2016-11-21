@@ -15,7 +15,7 @@ void ObjPLY::leerPLY(string nombre){
    filePly.read(v,t);
 }
 
-void ObjPLY::createGeometry(){
+void ObjPLY::createGeometry(bool escalado){
    vector<GLfloat> vertices;
    for (int i=0; i<v.size();i++){
       vertices.push_back(v[i]);
@@ -27,7 +27,8 @@ void ObjPLY::createGeometry(){
    }
 
    Obj3D::setMalla(vertices,triangulos);
-   centrarEscalar();
+   if (escalado)
+      centrarEscalar();
 }
 
 string ObjPLY::leerObjeto(){

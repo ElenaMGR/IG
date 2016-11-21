@@ -7,6 +7,8 @@
 #include "octaedro.h"
 #include "objPLY.h"
 #include "objRevolucion.h"
+#include "cilindro.h"
+#include "base.h"
 
 class Escena {
 private:
@@ -21,6 +23,8 @@ Octaedro octaedro;
 Obj3D obj3D;
 ObjPLY objPly;
 ObjRevolucion objRevolucion;
+Cilindro cilindro;
+Base bas;
 
 //Variables de control
 GLenum modo;
@@ -28,6 +32,7 @@ bool ajedrez;
 bool tapa, base;
 int rev;
 double angulo;
+bool prac3 = false;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;

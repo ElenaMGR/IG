@@ -17,7 +17,7 @@ protected:
 public:
    ObjPLY();
    void leerPLY(string nombre);
-   void createGeometry();
+   void createGeometry(bool escalado);
    string leerObjeto();
 };
 

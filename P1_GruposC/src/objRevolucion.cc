@@ -12,7 +12,7 @@ ObjRevolucion::ObjRevolucion(vector<float> vec){
    v=vec;
 }
 
-void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base){
+void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base, bool escalado){
    vector<GLfloat> vertices;
    vector<GLuint> triangulos;
    double angulo = (2.0 * M_PI) / repeticiones;
@@ -116,7 +116,8 @@ void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base){
    }
 
    Obj3D::setMalla(vertices,triangulos);
-   centrarEscalar();
+   if (escalado)
+      centrarEscalar();
 }
 
 
@@ -164,7 +165,7 @@ void ObjRevolucion::createGeometry(int repeticiones, double ang, bool tapa, bool
    //Triangulos
    int numVer = vaux.size()/3;
    for (int i=0; i < numVer -1; i++){
-      for (int j=0; j < repeticiones-1; j++){
+      for (int j=0; j < repeticiones; j++){
          triangulos.push_back(i*repeticiones + j);
          int p1 = i*repeticiones + ((j+1)/*%(repeticiones)*/);
          triangulos.push_back(p1);

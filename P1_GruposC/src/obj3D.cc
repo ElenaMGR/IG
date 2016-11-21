@@ -11,12 +11,9 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
    glVertexPointer (3, GL_FLOAT, 0, &(mesh.vertices[0]));
    glPolygonMode(face, mode);
    if (!ajedrez){
-      //glColor3f(0.0f, 0.0f, 0.0f);
       glDrawElements (GL_TRIANGLES, mesh.triangulos.size(),GL_UNSIGNED_INT, &(mesh.triangulos[0]));
    }else{
-      //glColor3f(0.0f, 0.0f, 0.0f);
       glDrawElements (GL_TRIANGLES, mesh.carasImpares.size(), GL_UNSIGNED_INT, &(mesh.carasImpares[0]));
-      //glColor3f(1.0f, 0.0f, 1.0f);
       glColorPointer(3, GL_FLOAT, 0, &(mesh.colorPares[0]));
       glDrawElements (GL_TRIANGLES, mesh.carasPares.size(), GL_UNSIGNED_INT, &(mesh.carasPares[0]));
    }

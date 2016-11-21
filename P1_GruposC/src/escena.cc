@@ -15,7 +15,7 @@ Escena::Escena(){
     Observer_angle_x = Observer_angle_y=0;
     ejes.changeAxisSize(5000);
     objPly.leerPLY("beethoven");
-    objPly.createGeometry();
+    objPly.createGeometry(true);
     obj3D = objPly;
     modo = GL_LINE;
     ajedrez = false;
@@ -23,7 +23,8 @@ Escena::Escena(){
     base=true;
     rev=20;
     objRevolucion.leerPLY("peon");
-    objRevolucion.createGeometry(rev,tapa,base);
+    objRevolucion.createGeometry(rev,tapa,base,true);
+    prac3 = true;
 }
 
 void Escena::inicializar(int UI_window_width,int UI_window_height) {
@@ -45,7 +46,12 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 // Funcion que dibuja objetos en la escena
 //***************************************************************************
 void Escena::draw_objects() {
-   obj3D.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+   if (prac3){
+      bas.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+   }else{
+      obj3D.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+   }
+
 }
 
 
@@ -68,25 +74,27 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case 'L': modo = GL_LINE; ajedrez = false; break;
     case 'F': modo = GL_FILL; ajedrez = false; break;
     case 'P': modo = GL_POINT; ajedrez = false; break;
-    case 'T': obj3D = tetraedro; break;
-    case 'C': obj3D = cubo; break;
-    case 'O': obj3D = octaedro; break;
+    case 'T': obj3D = tetraedro; prac3 = false; break;
+    case 'C': obj3D = cubo; prac3 = false; break;
+    case 'O': obj3D = octaedro; prac3 = false; break;
     case 'A': ajedrez = true; modo = GL_FILL; break;
-    case 'Y': objPly.leerPLY(objPly.leerObjeto()); objPly.createGeometry() ;obj3D = objPly; break;
+    case 'Y': objPly.leerPLY(objPly.leerObjeto()); objPly.createGeometry(true) ;obj3D = objPly; prac3 = false; break;
     case 'R': objRevolucion.leerPLY(objRevolucion.leerObjeto()) ;
                rev = objRevolucion.leerObjetoRev();
-               objRevolucion.createGeometry(rev,tapa,base) ;
+               objRevolucion.createGeometry(rev,tapa,base,true) ; prac3 = false;
                obj3D = objRevolucion;
                break;
     case 'X': rev = objRevolucion.leerObjetoRev();
-               objRevolucion.createGeometry(rev,tapa,base) ;
+               objRevolucion.createGeometry(rev,tapa,base,true) ; prac3 = false;
                obj3D = objRevolucion;
                break;
-    case 'B': base = !base; objRevolucion.createGeometry(rev,tapa,base) ;
+    case 'B': base = !base; objRevolucion.createGeometry(rev,tapa,base,true) ; prac3 = false;
                obj3D = objRevolucion;
                break;
-    case 'V': tapa = !tapa; objRevolucion.createGeometry(rev,tapa,base) ;
+    case 'V': tapa = !tapa; objRevolucion.createGeometry(rev,tapa,base,true) ;  prac3 = false;
                obj3D = objRevolucion;
+               break;
+    case '1': prac3 = true;
                break;
 
   }
