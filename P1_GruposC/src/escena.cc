@@ -105,6 +105,8 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
                break;
     case '5': prac3 = true; movil.setBalanceo();
                 break;
+    case '6': prac3 = true; animacion=!animacion;
+               break;
 
   }
   return 0;
@@ -168,4 +170,23 @@ glRotatef(Observer_angle_y,0,1,0);
 void Escena::draw_axis()
 {
 ejes.draw();
+}
+
+
+//**************************************************************************
+// Funcion para animar el objeto jerárquico
+//***************************************************************************
+
+void Escena::animar(){
+   if (animacion){
+      if (anima>200){
+         movil.setRotarTodo();
+         movil.setRotarFigura();
+         movil.setMoverFigura();
+         movil.setBalanceo();
+
+         anima=0;
+      }
+      anima++;
+   }
 }

@@ -33,6 +33,8 @@ bool tapa, base;
 int rev;
 double angulo;
 bool prac3 = false;
+bool animacion = false;
+int anima=0;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;
@@ -63,5 +65,6 @@ public:
 	// Interacci�n con la escena
 	int teclaPulsada(unsigned char Tecla1,int x,int y) ;
 	void teclaEspecial(int Tecla1,int x,int y);
+	void animar();
 };
 #endif

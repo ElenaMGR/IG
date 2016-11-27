@@ -75,6 +75,19 @@ void special_keys(int Tecla1,int x,int y) {
 	glutPostRedisplay();
 }
 
+
+
+//***************************************************************************
+// Funcion llamada idle
+//
+
+
+void animar(void) {
+	if (escena!=NULL)
+		escena->animar();
+	glutPostRedisplay();
+}
+
 //***************************************************************************
 // Funcion llamada para mostrar menú con opciones
 
@@ -135,6 +148,9 @@ glutReshapeFunc(change_window_size);
 glutKeyboardFunc(normal_keys);
 // asignación de la funcion llamada "tecla_Especial" al evento correspondiente
 glutSpecialFunc(special_keys);
+
+//asignación de la funcion llamada "idle"
+glutIdleFunc(animar);
 
 // funcion de inicialización
 escena->inicializar(UI_window_width,UI_window_height);
