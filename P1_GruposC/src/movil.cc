@@ -15,6 +15,17 @@ Movil::Movil(){
 void Movil::draw(GLenum face, GLenum mode, bool ajedrez){
    glPushMatrix();
 
+      glTranslatef(0,40,0);
+      glRotatef(balanceo,0,0,1);
+
+      glPushMatrix();
+         glTranslatef(0,-20,0);
+         glScalef(1,40,1);
+         cuerda.draw(GL_FRONT_AND_BACK, mode, ajedrez);
+      glPopMatrix();
+
+      glTranslatef(0,-40,0);
+
       glRotatef(rotarTodo,0,1,0);
 
       glPushMatrix();
@@ -59,4 +70,21 @@ void Movil::setRotarFigura(){
    figuraBarco.setRotarFigura(6);
    figuraAvion.setRotarFigura(9);
    figuraHelicoptero.setRotarFigura(12);
+}
+
+void Movil::setMoverFigura(){
+   figuraDelfin.setMoverFigura(1);
+   figuraBarco.setMoverFigura(2);
+   figuraAvion.setMoverFigura(3);
+   figuraHelicoptero.setMoverFigura(4);
+}
+
+void Movil::setBalanceo(){
+   balanceo += (tope) ? 3 : -3;
+
+   if (balanceo < -40)
+      tope = true;
+   if (balanceo > 40)
+      tope = false;
+
 }

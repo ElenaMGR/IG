@@ -18,11 +18,14 @@ class Figura {
       void dibujarBarco(GLenum face, GLenum mode, bool ajedrez);
       void dibujarHelicoptero(GLenum face, GLenum mode, bool ajedrez);
       double rotarFigura = 5;
+      double moverFigura = -20;
+      bool tope = false;
    public:
       Figura();
       void cargarPLY(string nombrePLY);
       void draw(GLenum face, GLenum mode, bool ajedrez, int caso);
       void setRotarFigura(double rotarFigura);
+      void setMoverFigura (double moverFigura);
 };
 
 #endif

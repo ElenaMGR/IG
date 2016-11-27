@@ -7,6 +7,7 @@
 #include <GL/gl.h>
 #include <string>
 #include <math.h>
+#include "cilindro.h"
 
 class Movil {
    private:
@@ -15,13 +16,17 @@ class Movil {
       Figura figuraAvion;
       Figura figuraHelicoptero;
       Base base;
+      Cilindro cuerda;
       double rotarTodo = 5;
+      double balanceo = 0;
+      bool tope = false;
    public:
       Movil();
       void draw(GLenum face, GLenum mode, bool ajedrez);
       void setRotarTodo();
       void setRotarFigura();
-
+      void setMoverFigura();
+      void setBalanceo();
 };
 
 #endif

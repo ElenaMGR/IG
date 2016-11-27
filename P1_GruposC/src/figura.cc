@@ -14,7 +14,7 @@ void Figura::cargarPLY(string nombrePLY){
 
 void Figura::draw(GLenum face, GLenum mode, bool ajedrez, int caso){
    glPushMatrix();
-      glTranslatef(0,-20,0);
+      glTranslatef(0,moverFigura,0);
       glRotatef(-90,1,0,0);
       glRotatef(rotarFigura,0,0,1);
       switch (caso) {
@@ -69,4 +69,13 @@ void Figura::dibujarHelicoptero(GLenum face, GLenum mode, bool ajedrez){
 void Figura::setRotarFigura(double rotarFigura){
    this->rotarFigura += rotarFigura;
    this->rotarFigura = fmod(this->rotarFigura,360);
+}
+
+void Figura::setMoverFigura (double moverFigura){
+   this->moverFigura += (tope) ? moverFigura : -moverFigura;
+
+   if (this->moverFigura < -35)
+      tope = true;
+   if (this->moverFigura > -15)
+      tope = false;
 }

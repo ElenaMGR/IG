@@ -101,6 +101,10 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
                break;
     case '3': prac3 = true; movil.setRotarFigura();
                break;
+    case '4': prac3 = true; movil.setMoverFigura();
+               break;
+    case '5': prac3 = true; movil.setBalanceo();
+                break;
 
   }
   return 0;
