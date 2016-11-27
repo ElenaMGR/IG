@@ -47,7 +47,8 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 //***************************************************************************
 void Escena::draw_objects() {
    if (prac3){
-      bas.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+      //bas.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+      figura.draw(GL_FRONT_AND_BACK, modo, ajedrez,3);
    }else{
       obj3D.draw(GL_FRONT_AND_BACK, modo, ajedrez);
    }

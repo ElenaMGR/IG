@@ -10,9 +10,10 @@ class Base {
 
 private:
    Cilindro cilindro;
-   void DibujarCilindro(GLenum face, GLenum mode, bool ajedrez);
-   void DibujarCilindros(GLenum face, GLenum mode, bool ajedrez);
-   void DibujarEsfera(GLenum face, GLenum mode, bool ajedrez);
+   void dibujarCilindro(GLenum face, GLenum mode, bool ajedrez);
+   void dibujarCilindros(GLenum face, GLenum mode, bool ajedrez);
+   void dibujarEsfera(GLenum face, GLenum mode, bool ajedrez);
+   void dibujarTorus();
 
    Esfera esfera;
 

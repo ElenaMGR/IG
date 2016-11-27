@@ -9,44 +9,54 @@ Base::Base(){
 }
 
 void Base::draw(GLenum face, GLenum mode, bool ajedrez){
-   DibujarCilindros(face,mode,ajedrez);
-   DibujarEsfera(face,mode,ajedrez);
+   dibujarTorus();
+   dibujarCilindros(face,mode,ajedrez);
+   dibujarEsfera(face,mode,ajedrez);
 }
 
-void Base::DibujarCilindro(GLenum face, GLenum mode, bool ajedrez){
+void Base::dibujarCilindro(GLenum face, GLenum mode, bool ajedrez){
    glPushMatrix();
 
-   glTranslatef(0,18,-13);
-   glRotatef(30,1,0,0);
-   glScalef(1.5,40,1.5);
-   cilindro.draw(face, mode, ajedrez);
+      glRotatef(90,1,0,0);
+      glTranslatef(0,25,0);
+      glScalef(1.5,40,1.5);
+      cilindro.draw(face, mode, ajedrez);
 
-   glPopMatrix();
-}
-
-void Base::DibujarCilindros(GLenum face, GLenum mode, bool ajedrez){
-   glPushMatrix();
-   glRotatef(90,0,1,0);
-   DibujarCilindro(face, mode, ajedrez);
-   glPopMatrix();
-
-   glPushMatrix();
-   glRotatef(180,0,1,0);
-   DibujarCilindro(face, mode, ajedrez);
-   glPopMatrix();
-
-   glPushMatrix();
-   glRotatef(-90,0,1,0);
-   DibujarCilindro(face, mode, ajedrez);
-   glPopMatrix();
-
-   glPushMatrix();
-   DibujarCilindro(face, mode, ajedrez);
    glPopMatrix();
 }
 
-void Base::DibujarEsfera(GLenum face, GLenum mode, bool ajedrez){
-   glTranslatef(0,36,0);
-   glScalef(7,7,7);
+void Base::dibujarCilindros(GLenum face, GLenum mode, bool ajedrez){
+   glPushMatrix();
+      glRotatef(90,0,1,0);
+      dibujarCilindro(face, mode, ajedrez);
+   glPopMatrix();
+
+   glPushMatrix();
+      glRotatef(180,0,1,0);
+      dibujarCilindro(face, mode, ajedrez);
+   glPopMatrix();
+
+   glPushMatrix();
+      glRotatef(-90,0,1,0);
+      dibujarCilindro(face, mode, ajedrez);
+   glPopMatrix();
+
+   glPushMatrix();
+      dibujarCilindro(face, mode, ajedrez);
+   glPopMatrix();
+}
+
+void Base::dibujarEsfera(GLenum face, GLenum mode, bool ajedrez){
+   glScalef(10,10,10);
    esfera.draw(face, mode, ajedrez);
+}
+
+void Base::dibujarTorus (){
+   glPushMatrix();
+
+      glRotatef(90,1,0,0);
+      glColor3d(0,0,0);
+      glutSolidTorus(3,47,40,40);
+
+   glPopMatrix();
 }
