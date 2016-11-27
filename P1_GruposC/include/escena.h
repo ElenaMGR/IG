@@ -34,7 +34,16 @@ int rev;
 double angulo;
 bool prac3 = false;
 bool animacion = false;
-int anima=0;
+
+int velocidadRFigura = 100;
+int velocidadMFigura = 100;
+int velocidadBalanceo = 100;
+int velocidadRMovil = 100;
+
+int anima1=0;
+int anima2=0;
+int anima3=0;
+int anima4=0;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;
@@ -53,6 +62,12 @@ private:
 	void change_projection();
 	void change_observer();
 
+//Velocidades
+	void cambiarVelocidadTotal(int vel);
+	void cambiarVelocidadRFigura(int vel);
+	void cambiarVelocidadMFigura(int vel);
+	void cambiarVelocidadBalanceo(int vel);
+	void cambiarVelocidadRMovil(int vel);
 
 public:
      Escena();

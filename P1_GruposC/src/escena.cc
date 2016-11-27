@@ -74,26 +74,26 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case 'L': modo = GL_LINE; ajedrez = false; break;
     case 'F': modo = GL_FILL; ajedrez = false; break;
     case 'P': modo = GL_POINT; ajedrez = false; break;
-    case 'T': obj3D = tetraedro; prac3 = false; break;
-    case 'C': obj3D = cubo; prac3 = false; break;
-    case 'O': obj3D = octaedro; prac3 = false; break;
+    //case 'T': obj3D = tetraedro; prac3 = false; break;
+    //case 'C': obj3D = cubo; prac3 = false; break;
+    //case 'O': obj3D = octaedro; prac3 = false; break;
     case 'A': ajedrez = true; modo = GL_FILL; break;
-    case 'Y': objPly.leerPLY(objPly.leerObjeto()); objPly.createGeometry(true) ;obj3D = objPly; prac3 = false; break;
-    case 'R': objRevolucion.leerPLY(objRevolucion.leerObjeto()) ;
+    //case 'Y': objPly.leerPLY(objPly.leerObjeto()); objPly.createGeometry(true) ;obj3D = objPly; prac3 = false; break;
+    /*case 'R': objRevolucion.leerPLY(objRevolucion.leerObjeto()) ;
                rev = objRevolucion.leerObjetoRev();
                objRevolucion.createGeometry(rev,tapa,base,true) ; prac3 = false;
                obj3D = objRevolucion;
-               break;
-    case 'X': rev = objRevolucion.leerObjetoRev();
+               break;*/
+    /*case 'X': rev = objRevolucion.leerObjetoRev();
                objRevolucion.createGeometry(rev,tapa,base,true) ; prac3 = false;
                obj3D = objRevolucion;
-               break;
-    case 'B': base = !base; objRevolucion.createGeometry(rev,tapa,base,true) ; prac3 = false;
+               break;*/
+    /*case 'B': base = !base; objRevolucion.createGeometry(rev,tapa,base,true) ; prac3 = false;
                obj3D = objRevolucion;
-               break;
-    case 'V': tapa = !tapa; objRevolucion.createGeometry(rev,tapa,base,true) ;  prac3 = false;
+               break;*/
+    /*case 'V': tapa = !tapa; objRevolucion.createGeometry(rev,tapa,base,true) ;  prac3 = false;
                obj3D = objRevolucion;
-               break;
+               break;*/
     case '1': prac3 = true;
                break;
 
@@ -108,6 +108,24 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
     case '6': prac3 = true; animacion=!animacion;
                break;
 
+  }
+  switch (Tecla1) {
+      case 'M': prac3 = true; cambiarVelocidadRMovil(5);
+               break;
+      case 'm': prac3 = true; cambiarVelocidadRMovil(-5);
+               break;
+      case 'N': prac3 = true; cambiarVelocidadRFigura(5);
+               break;
+      case 'n': prac3 = true; cambiarVelocidadRFigura(-5);
+               break;
+      case 'B': prac3 = true; cambiarVelocidadMFigura(5);
+               break;
+      case 'b': prac3 = true; cambiarVelocidadMFigura(-5);
+               break;
+      case 'V': prac3 = true; cambiarVelocidadBalanceo(5);
+               break;
+      case 'v': prac3 = true; cambiarVelocidadBalanceo(-5);
+               break;
   }
   return 0;
 }
@@ -179,14 +197,43 @@ ejes.draw();
 
 void Escena::animar(){
    if (animacion){
-      if (anima>200){
+      if (anima1>velocidadRMovil){
          movil.setRotarTodo();
-         movil.setRotarFigura();
-         movil.setMoverFigura();
-         movil.setBalanceo();
-
-         anima=0;
+         anima1=0;
       }
-      anima++;
+      anima1++;
+      if (anima2>velocidadRFigura){
+         movil.setRotarFigura();
+         anima2=0;
+      }
+      anima2++;
+      if (anima3>velocidadMFigura){
+         movil.setMoverFigura();
+         anima3=0;
+      }
+      anima3++;
+      if (anima4>velocidadBalanceo){
+         movil.setBalanceo();
+         anima4=0;
+      }
+      anima4++;
    }
+}
+
+
+
+void Escena::cambiarVelocidadRFigura(int vel){
+   velocidadRFigura += vel;
+}
+
+void Escena::cambiarVelocidadMFigura(int vel){
+   velocidadMFigura += vel;
+}
+
+void Escena::cambiarVelocidadBalanceo(int vel){
+   velocidadBalanceo += vel;
+}
+
+void Escena::cambiarVelocidadRMovil(int vel){
+   velocidadRMovil += vel;
 }
