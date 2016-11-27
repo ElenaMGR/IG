@@ -12,6 +12,7 @@ struct Malla {
    vector<GLuint> carasPares;
    vector<GLuint> carasImpares;
    vector<GLfloat> color;
+   vector<GLfloat> colorLineas;
    vector<GLfloat> colorPares;
 };
 

@@ -8,8 +8,7 @@
 #include "objPLY.h"
 #include "objRevolucion.h"
 #include "cilindro.h"
-#include "base.h"
-#include "figura.h"
+#include "movil.h"
 
 class Escena {
 private:
@@ -25,8 +24,7 @@ Obj3D obj3D;
 ObjPLY objPly;
 ObjRevolucion objRevolucion;
 Cilindro cilindro;
-Base bas;
-Figura figura;
+Movil movil;
 
 //Variables de control
 GLenum modo;

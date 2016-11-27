@@ -6,6 +6,7 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <string>
+#include <math.h>
 
 class Figura {
    private:
@@ -16,11 +17,12 @@ class Figura {
       void dibujarAvion(GLenum face, GLenum mode, bool ajedrez);
       void dibujarBarco(GLenum face, GLenum mode, bool ajedrez);
       void dibujarHelicoptero(GLenum face, GLenum mode, bool ajedrez);
+      double rotarFigura = 5;
    public:
       Figura();
       void cargarPLY(string nombrePLY);
       void draw(GLenum face, GLenum mode, bool ajedrez, int caso);
-
+      void setRotarFigura(double rotarFigura);
 };
 
 #endif

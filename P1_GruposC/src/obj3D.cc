@@ -12,6 +12,12 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
    glPolygonMode(face, mode);
    if (!ajedrez){
       glDrawElements (GL_TRIANGLES, mesh.triangulos.size(),GL_UNSIGNED_INT, &(mesh.triangulos[0]));
+      /*if (mode == GL_FILL ){
+         glPolygonMode(face, GL_LINE);
+         glColorPointer(3, GL_FLOAT, 0, &(mesh.colorLineas[0]));
+         glDrawElements (GL_TRIANGLES, mesh.triangulos.size(),GL_UNSIGNED_INT, &(mesh.triangulos[0]));
+      }*/
+
    }else{
       glDrawElements (GL_TRIANGLES, mesh.carasImpares.size(), GL_UNSIGNED_INT, &(mesh.carasImpares[0]));
       glColorPointer(3, GL_FLOAT, 0, &(mesh.colorPares[0]));
@@ -53,6 +59,12 @@ void Obj3D::asignarColor(float r, float g, float b){
       mesh.color.push_back(r);
       mesh.color.push_back(g);
       mesh.color.push_back(b);
+   }
+   mesh.colorLineas.clear();
+   for (int i=0; i<mesh.vertices.size(); i+=3){
+      mesh.colorLineas.push_back(0);
+      mesh.colorLineas.push_back(1);
+      mesh.colorLineas.push_back(0);
    }
 }
 

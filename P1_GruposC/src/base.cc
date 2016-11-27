@@ -56,7 +56,7 @@ void Base::dibujarTorus (){
 
       glRotatef(90,1,0,0);
       glColor3d(0,0,0);
-      glutSolidTorus(3,47,40,40);
+      glutSolidTorus(1,46,40,40);
 
    glPopMatrix();
 }

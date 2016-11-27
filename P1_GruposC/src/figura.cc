@@ -13,12 +13,17 @@ void Figura::cargarPLY(string nombrePLY){
 }
 
 void Figura::draw(GLenum face, GLenum mode, bool ajedrez, int caso){
-   switch (caso) {
-      case 0: dibujarDelfin(face, mode, ajedrez); break;
-      case 1: dibujarAvion(face, mode, ajedrez); break;
-      case 2: dibujarBarco(face, mode, ajedrez); break;
-      case 3: dibujarHelicoptero(face, mode, ajedrez); break;
-   }
+   glPushMatrix();
+      glTranslatef(0,-20,0);
+      glRotatef(-90,1,0,0);
+      glRotatef(rotarFigura,0,0,1);
+      switch (caso) {
+         case 0: dibujarDelfin(face, mode, ajedrez); break;
+         case 1: dibujarBarco(face, mode, ajedrez); break;
+         case 2: dibujarAvion(face, mode, ajedrez); break;
+         case 3: dibujarHelicoptero(face, mode, ajedrez); break;
+      }
+   glPopMatrix();
 
    dibujarCilindro(face, mode, ajedrez);
 }
@@ -34,41 +39,34 @@ void Figura::dibujarCilindro(GLenum face, GLenum mode, bool ajedrez){
 }
 
 void Figura::dibujarDelfin(GLenum face, GLenum mode, bool ajedrez){
-   cargarPLY("dolphins");
    glPushMatrix();
-      glTranslatef(0,-20,0);
-      glRotatef(-90,1,0,0);
       glScalef(0.3,0.3,0.3);
       figurita.draw(face, mode, ajedrez);
    glPopMatrix();
 }
 
 void Figura::dibujarBarco(GLenum face, GLenum mode, bool ajedrez){
-   cargarPLY("galleon");
    glPushMatrix();
-      glTranslatef(0,-20,0);
-      glRotatef(-90,1,0,0);
       glScalef(0.15,0.15,0.15);
       figurita.draw(face, mode, ajedrez);
    glPopMatrix();
 }
 
 void Figura::dibujarAvion(GLenum face, GLenum mode, bool ajedrez){
-   cargarPLY("x29");
    glPushMatrix();
-      glTranslatef(0,-20,0);
-      glRotatef(-90,1,0,0);
       glScalef(0.3,0.3,0.3);
       figurita.draw(face, mode, ajedrez);
    glPopMatrix();
 }
 
 void Figura::dibujarHelicoptero(GLenum face, GLenum mode, bool ajedrez){
-   cargarPLY("hind");
    glPushMatrix();
-      glTranslatef(0,-20,0);
-      glRotatef(-90,1,0,0);
       glScalef(0.3,0.3,0.3);
       figurita.draw(face, mode, ajedrez);
    glPopMatrix();
+}
+
+void Figura::setRotarFigura(double rotarFigura){
+   this->rotarFigura += rotarFigura;
+   this->rotarFigura = fmod(this->rotarFigura,360);
 }

@@ -47,8 +47,7 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 //***************************************************************************
 void Escena::draw_objects() {
    if (prac3){
-      //bas.draw(GL_FRONT_AND_BACK, modo, ajedrez);
-      figura.draw(GL_FRONT_AND_BACK, modo, ajedrez,3);
+      movil.draw(GL_FRONT_AND_BACK, modo, ajedrez);
    }else{
       obj3D.draw(GL_FRONT_AND_BACK, modo, ajedrez);
    }
@@ -96,6 +95,11 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
                obj3D = objRevolucion;
                break;
     case '1': prac3 = true;
+               break;
+
+    case '2': prac3 = true; movil.setRotarTodo();
+               break;
+    case '3': prac3 = true; movil.setRotarFigura();
                break;
 
   }
