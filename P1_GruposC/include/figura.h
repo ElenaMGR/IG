@@ -22,7 +22,7 @@ class Figura {
       bool tope = false;
    public:
       Figura();
-      void cargarPLY(string nombrePLY);
+      void cargarPLY(string nombrePLY, double r, double g, double b);
       void draw(GLenum face, GLenum mode, bool ajedrez, int caso);
       void setRotarFigura(double rotarFigura);
       void setMoverFigura (double moverFigura);

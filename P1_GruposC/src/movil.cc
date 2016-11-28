@@ -5,17 +5,18 @@
 #include "movil.h"
 
 Movil::Movil(){
-   figuraDelfin.cargarPLY("dolphins");
-   figuraBarco.cargarPLY("galleon");
-   figuraAvion.cargarPLY("x29");
-   figuraHelicoptero.cargarPLY("hind");
+   figuraDelfin.cargarPLY("dolphins",0.02,0.04,0.8);
+   figuraBarco.cargarPLY("galleon",0.38,0.25,0.07);
+   figuraAvion.cargarPLY("x29",0.39,0.53,0.40);
+   figuraHelicoptero.cargarPLY("hind",1,0.28,0.28);
 }
 
 
 void Movil::draw(GLenum face, GLenum mode, bool ajedrez){
    glPushMatrix();
 
-      glTranslatef(0,40,0);
+      glScalef(1.3,1.3,1.3);
+      glTranslatef(0,50,0);
       glRotatef(balanceo,0,0,1);
 
       glPushMatrix();

@@ -5,7 +5,8 @@
 #include "base.h"
 
 Base::Base(){
-
+   esfera.asignarColor(0.15,0.15,0.15);
+   cilindro.asignarColor(0.15,0.15,0.15);
 }
 
 void Base::draw(GLenum face, GLenum mode, bool ajedrez){

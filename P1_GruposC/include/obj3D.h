@@ -24,12 +24,12 @@ public:
    * Método que dibuja el objeto3D
    */
    void draw (GLenum face, GLenum mode, bool ajedrez);
+   void asignarColor(float r, float g, float b);
 
 protected:
    void setMalla(vector<GLfloat> v, vector<GLuint> t);
    vector<GLuint> getCarasPares (bool par);
    void moverObjeto ();
-   void asignarColor(float r, float g, float b);
    void asignarColorCarasPares(float r, float g, float b);
    void centrarEscalar();
 };

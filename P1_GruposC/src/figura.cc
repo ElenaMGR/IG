@@ -5,11 +5,13 @@
 #include "figura.h"
 
 Figura::Figura(){
+   cilindro.asignarColor(0.15,0.15,0.15);
 }
 
-void Figura::cargarPLY(string nombrePLY){
+void Figura::cargarPLY(string nombrePLY, double r, double g, double b){
    figurita.leerPLY(nombrePLY);
    figurita.createGeometry(true);
+   figurita.asignarColor(r,g,b);
 }
 
 void Figura::draw(GLenum face, GLenum mode, bool ajedrez, int caso){
