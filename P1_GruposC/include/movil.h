@@ -27,6 +27,7 @@ class Movil {
       void setRotarFigura();
       void setMoverFigura();
       void setBalanceo();
+      void setEscalarAvion ();
 };
 
 #endif

@@ -89,3 +89,7 @@ void Movil::setBalanceo(){
       tope = false;
 
 }
+
+void Movil::setEscalarAvion (){
+   figuraAvion.setEscalarAvion(0.1);
+}

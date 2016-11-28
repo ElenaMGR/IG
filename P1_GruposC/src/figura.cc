@@ -56,7 +56,7 @@ void Figura::dibujarBarco(GLenum face, GLenum mode, bool ajedrez){
 
 void Figura::dibujarAvion(GLenum face, GLenum mode, bool ajedrez){
    glPushMatrix();
-      glScalef(0.3,0.3,0.3);
+      glScalef(escalarAvion,escalarAvion,escalarAvion);
       figurita.draw(face, mode, ajedrez);
    glPopMatrix();
 }
@@ -79,5 +79,14 @@ void Figura::setMoverFigura (double moverFigura){
    if (this->moverFigura < -35)
       tope = true;
    if (this->moverFigura > -15)
+      tope = false;
+}
+
+void Figura::setEscalarAvion (double escalarAvion){
+   this->escalarAvion += (tope) ? escalarAvion : -escalarAvion;
+
+   if (this->escalarAvion < 0.1)
+      tope = true;
+   if (this->escalarAvion > 0.7)
       tope = false;
 }

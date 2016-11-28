@@ -19,6 +19,7 @@ class Figura {
       void dibujarHelicoptero(GLenum face, GLenum mode, bool ajedrez);
       double rotarFigura = 5;
       double moverFigura = -20;
+      double escalarAvion = 0.3;
       bool tope = false;
    public:
       Figura();
@@ -26,6 +27,7 @@ class Figura {
       void draw(GLenum face, GLenum mode, bool ajedrez, int caso);
       void setRotarFigura(double rotarFigura);
       void setMoverFigura (double moverFigura);
+      void setEscalarAvion (double escalarAvion);
 };
 
 #endif

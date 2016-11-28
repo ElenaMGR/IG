@@ -107,6 +107,8 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
                 break;
     case '6': prac3 = true; animacion=!animacion;
                break;
+    case '7': prac3 = true; movil.setEscalarAvion();
+               break;
 
   }
   switch (Tecla1) {
