@@ -15,7 +15,7 @@ Movil::Movil(){
 void Movil::draw(GLenum face, GLenum mode, bool ajedrez){
    glPushMatrix();
 
-      glScalef(1.3,1.3,1.3);
+      glScalef(1.5,1.5,1.5);
       glTranslatef(0,50,0);
       glRotatef(balanceo,0,0,1);
 
