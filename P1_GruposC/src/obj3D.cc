@@ -119,6 +119,7 @@ void Obj3D::centrarEscalar(){
 }
 
 void Obj3D::generarNormalesCaras(){
+   mesh.normalCaras.clear;
    // Variables donde guardar los vectores dirección a y b
    float ax,ay,az,bx,by,bz;
    //Variables de la normal
