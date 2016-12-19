@@ -32,6 +32,7 @@ void Obj3D::setMalla(vector<GLfloat> v, vector<GLuint> t){
    mesh.carasImpares = getCarasPares(false);
    asignarColor(0.0,0.0,0.0);
    asignarColorCarasPares(1.0, 0.0, 1.0);
+   generarNormalesCaras();
 }
 
 
@@ -114,5 +115,52 @@ void Obj3D::centrarEscalar(){
    for (int i=0; i<mesh.vertices.size(); i++){
       mesh.vertices[i]=mesh.vertices[i]*(90/(maxx-minx));
    }
+
+}
+
+void Obj3D::generarNormalesCaras(){
+   // Variables donde guardar los vectores dirección a y b
+   float ax,ay,az,bx,by,bz;
+   //Variables de la normal
+   float nx,ny,nz;
+   //Calculo los vectores a y b
+   for (int i=0; i<mesh.triangulos.size(); i+=3){
+      ax=mesh.vertices[mesh.triangulos[i]] - mesh.vertices[(mesh.triangulos[i+1])*3];
+      ay=mesh.vertices[mesh.triangulos[i]+1] - mesh.vertices[(mesh.triangulos[i+1])*3+1];
+      az=mesh.vertices[mesh.triangulos[i]+2] - mesh.vertices[(mesh.triangulos[i+1])*3+2];
+
+      bx=mesh.vertices[mesh.triangulos[i+2]] - mesh.vertices[(mesh.triangulos[i+1])*3];
+      by=mesh.vertices[mesh.triangulos[i+2]+1] - mesh.vertices[(mesh.triangulos[i+1])*3+1];
+      bz=mesh.vertices[mesh.triangulos[i+2]+2] - mesh.vertices[(mesh.triangulos[i+1])*3+2];
+
+      //Normalizo antes de hacer el producto a x b para evitar posibles errores
+      normalizar(ax,ay,az);
+      normalizar(bx,by,bz);
+
+      //Cáculo la normal de a y b
+      nx = ay*bz - az*by;
+      ny = az*bx - ax*bz;
+      nz = ax*by - ay*bz;
+
+      //Normalizamos las normales
+      normalizar(nx,ny,nz);
+
+      //Guardo las normales de cara
+      mesh.normalesCaras.push_back(nx);
+      mesh.normalesCaras.push_back(ny);
+      mesh.normalesCaras.push_back(nz);
+   }
+
+}
+
+void Obj3D::normalizar(float & x, float & y, float & z){
+   float aux = sqrt(x*x+y*y+z*z);
+
+   x = x / aux;
+   y = y / aux;
+   z = z / aux;
+}
+
+void Obj3D::generarNormalesVertices(){
 
 }

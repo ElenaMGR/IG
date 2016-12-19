@@ -14,6 +14,8 @@ struct Malla {
    vector<GLfloat> color;
    vector<GLfloat> colorLineas;
    vector<GLfloat> colorPares;
+   vector<GLfloat> normalesCaras;
+   vector<GLfloat> normalesVertices;
 };
 
 class Obj3D {
@@ -25,6 +27,8 @@ public:
    */
    void draw (GLenum face, GLenum mode, bool ajedrez);
    void asignarColor(float r, float g, float b);
+   void generarNormalesCaras();
+   void generarNormalesVertices();
 
 protected:
    void setMalla(vector<GLfloat> v, vector<GLuint> t);
@@ -32,6 +36,8 @@ protected:
    void moverObjeto ();
    void asignarColorCarasPares(float r, float g, float b);
    void centrarEscalar();
+   void normalizar(float & x, float & y, float & z);
+
 };
 
 
