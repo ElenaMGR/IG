@@ -6,7 +6,7 @@ INC=./include/
 OBJ=./obj/
 # nombre del fichero ejecutable
 #
-TARGETS= prueba3
+TARGETS= practica4
 
 # banderas para el compilador (C y C++). Se indican los directorios donde se puenden
 # encontrar ficheros para incluir mediante la opcion -I

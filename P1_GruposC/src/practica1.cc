@@ -95,21 +95,10 @@ void animar(void) {
 
 void mostrarMenu() {
 	cout<< "Opciones: " <<endl;
-	cout<< "p: dibujar puntos" <<endl;
-	cout<< "l: dibujar lineas" <<endl;
-	cout<< "f: dibujar sólido" <<endl;
-	cout<< "a: dibujar ajedrez" <<endl;
-	cout<< "1: dibujar Práctica3" <<endl;
-	cout<< "2: Rotar todo" <<endl;
-	cout<< "3: Rotar figura" <<endl;
-	cout<< "4: Mover figura" <<endl;
-	cout<< "5: Balanceo" <<endl;
-	cout<< "6: Animar" <<endl;
-	cout<< "V/v: Aumentar/disminuir balanceo" <<endl;
-	cout<< "B/b: Aumentar/disminuir movimiento de la figura" <<endl;
-	cout<< "N/n: Aumentar/disminuir rotación de la figura" <<endl;
-	cout<< "M/m: Aumentar/disminuir rotación" <<endl;
-
+	cout<< "1: Práctica 1" <<endl;
+	cout<< "2: Práctica 2" <<endl;
+	cout<< "3: Práctica 3" <<endl;
+	cout<< "4: Práctica 4" <<endl;
 	cout<< "q: salir" <<endl;
 }
 
@@ -140,7 +129,7 @@ glutInitWindowPosition(UI_window_pos_x,UI_window_pos_y);
 glutInitWindowSize(UI_window_width,UI_window_height);
 
 // llamada para crear la ventana, indicando el titulo
-glutCreateWindow("Práctica 2: Elena María Gómez Ríos");
+glutCreateWindow("Práctica 4: Elena María Gómez Ríos");
 mostrarMenu();
 
 // asignación de la funcion llamada "dibujar" al evento de dibujo

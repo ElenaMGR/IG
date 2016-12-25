@@ -9,6 +9,9 @@
 #include "objRevolucion.h"
 #include "cilindro.h"
 #include "movil.h"
+#include <iostream>
+
+using namespace std;
 
 class Escena {
 private:
@@ -32,7 +35,6 @@ bool ajedrez;
 bool tapa, base;
 int rev;
 double angulo;
-bool prac3 = false;
 bool animacion = false;
 
 int velocidadRFigura = 100;
@@ -44,6 +46,8 @@ int anima1=0;
 int anima2=0;
 int anima3=0;
 int anima4=0;
+
+int practica=4;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;
@@ -69,6 +73,10 @@ private:
 	void cambiarVelocidadBalanceo(int vel);
 	void cambiarVelocidadRMovil(int vel);
 
+//mostrar las opciones del menú dependiendo de la práctica
+	void mostrarMenu();
+	void inicializarPractica();
+
 public:
      Escena();
 	void inicializar(int UI_window_width,int UI_window_height);
@@ -81,5 +89,7 @@ public:
 	int teclaPulsada(unsigned char Tecla1,int x,int y) ;
 	void teclaEspecial(int Tecla1,int x,int y);
 	void animar();
+
+
 };
 #endif

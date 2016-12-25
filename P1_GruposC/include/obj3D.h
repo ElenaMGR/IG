@@ -4,6 +4,7 @@
 #include <vector>
 #include <GL/glut.h>
 #include <GL/gl.h>
+#include "math.h"
 using namespace std;
 
 struct Malla {
