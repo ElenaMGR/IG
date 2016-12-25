@@ -28,6 +28,12 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 	glEnable(GL_DEPTH_TEST);	// se habilita el z-bufer
    glEnable (GL_CULL_FACE);
 
+   if (practica==4){
+      luz.enableLuz(true);
+      luz.Inicializarluz();
+   }
+
+
 	this->change_projection();
 	Width=UI_window_width/10;
 	Height=UI_window_height/10;
@@ -152,7 +158,9 @@ void Escena::inicializarPractica(){
    }
 
    else if (practica==4){
-
+      objPly.leerPLY("beethoven");
+      objPly.createGeometry(true);
+      obj3D = objPly;
    }
 }
 

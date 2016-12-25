@@ -9,6 +9,15 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
    glEnableClientState(GL_VERTEX_ARRAY);
    glColorPointer(3, GL_FLOAT, 0, &(mesh.color[0]));
    glVertexPointer (3, GL_FLOAT, 0, &(mesh.vertices[0]));
+
+   // Normalización de normales
+   glEnable(GL_NORMALIZE);
+   // especificar que tiene un vector de Normales por vertices
+   glEnableClientState(GL_NORMAL_ARRAY);
+   // especificar puntero a tabla de coords. de normales de vertices.
+   glNormalPointer(GL_FLOAT,0,&(mesh.normalesVertices[0]));
+
+
    glPolygonMode(face, mode);
    if (!ajedrez){
       glDrawElements (GL_TRIANGLES, mesh.triangulos.size(),GL_UNSIGNED_INT, &(mesh.triangulos[0]));
@@ -23,6 +32,7 @@ void Obj3D::draw (GLenum face, GLenum mode, bool ajedrez){
       glColorPointer(3, GL_FLOAT, 0, &(mesh.colorPares[0]));
       glDrawElements (GL_TRIANGLES, mesh.carasPares.size(), GL_UNSIGNED_INT, &(mesh.carasPares[0]));
    }
+
 }
 
 void Obj3D::setMalla(vector<GLfloat> v, vector<GLuint> t){
@@ -33,6 +43,7 @@ void Obj3D::setMalla(vector<GLfloat> v, vector<GLuint> t){
    asignarColor(0.0,0.0,0.0);
    asignarColorCarasPares(1.0, 0.0, 1.0);
    generarNormalesCaras();
+   generarNormalesVertices();
 }
 
 
@@ -163,5 +174,32 @@ void Obj3D::normalizar(float & x, float & y, float & z){
 }
 
 void Obj3D::generarNormalesVertices(){
+   //Variables de la normal
+   float nx,ny,nz;
 
+   mesh.normalesVertices.clear();
+   mesh.normalesVertices = vector<GLfloat> (mesh.vertices.size(),0);
+
+   for (int i=0; i < mesh.triangulos.size(); i+=3){
+      nx=mesh.normalesCaras.at(i);
+      ny=mesh.normalesCaras.at(i+1);
+      nz=mesh.normalesCaras.at(i+2);
+
+      mesh.normalesVertices.at(mesh.triangulos.at(i)) = nx + mesh.normalesCaras.at(mesh.triangulos.at(i));
+      mesh.normalesVertices.at(mesh.triangulos.at(i)+1) = ny + mesh.normalesCaras.at(mesh.triangulos.at(i)+1);
+      mesh.normalesVertices.at(mesh.triangulos.at(i)+2) = nz + mesh.normalesCaras.at(mesh.triangulos.at(i)+2);
+
+      mesh.normalesVertices.at(mesh.triangulos.at(i+1)) = nx + mesh.normalesCaras.at(mesh.triangulos.at(i+1));
+      mesh.normalesVertices.at(mesh.triangulos.at(i+1)+1) = ny + mesh.normalesCaras.at(mesh.triangulos.at(i+1)+1);
+      mesh.normalesVertices.at(mesh.triangulos.at(i+1)+2) = nz + mesh.normalesCaras.at(mesh.triangulos.at(i+1)+2);
+
+      mesh.normalesVertices.at(mesh.triangulos.at(i+2)) = nx + mesh.normalesCaras.at(mesh.triangulos.at(i+2));
+      mesh.normalesVertices.at(mesh.triangulos.at(i+2)+1) = ny + mesh.normalesCaras.at(mesh.triangulos.at(i+2)+1);
+      mesh.normalesVertices.at(mesh.triangulos.at(i+2)+2) = nz + mesh.normalesCaras.at(mesh.triangulos.at(i+2)+2);
+   }
+
+   // Normalización
+   for (int i=0; i < mesh.normalesVertices.size(); i+=3){
+      normalizar(mesh.normalesVertices[i],mesh.normalesVertices[i+1],mesh.normalesVertices[i+2]);
+   }
 }

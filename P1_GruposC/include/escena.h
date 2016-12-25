@@ -9,6 +9,7 @@
 #include "objRevolucion.h"
 #include "cilindro.h"
 #include "movil.h"
+#include "luz.h"
 #include <iostream>
 
 using namespace std;
@@ -28,6 +29,7 @@ ObjPLY objPly;
 ObjRevolucion objRevolucion;
 Cilindro cilindro;
 Movil movil;
+Luz luz;
 
 //Variables de control
 GLenum modo;
