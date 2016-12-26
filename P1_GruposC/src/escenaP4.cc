@@ -16,40 +16,45 @@ EscenaP4::EscenaP4(){
 
    base_lata.leerPLY("lata-pinf");
    base_lata.createGeometry(20,true,true,false);
-   material_cuerpo =  Material(9,"./textures/text-madera.bmp",true,Tupla3r(1,0,0),Tupla3r(0,1,0),
+   material_cuerpo =  Material(9,"./textures/text-lata-1.bmp",true,Tupla3r(1,0,0),Tupla3r(0,1,0),
                      Tupla4r(0.2,0.2,0.2,1.0),Tupla4r(0.5,0.5,0.5,1),Tupla4r(0.5,0.5,0.5,1),80);
    material_metalico =Material(5,Tupla4r(0.2,0.2,0.2,1.0),Tupla4r(0.5,0.5,0.5,1),Tupla4r(0.5,0.5,0.5,1),80);
 }
 
 
 void EscenaP4::draw(GLenum face,int mode_view,GLfloat n){
-  glPushMatrix();
-    glScalef(20,20,20);
-    glTranslatef(2,2,0);
-    // Peon madera
-    material_madera.activarMaterial();
-    peon.draw(face,mode_view,n);
+   glPushMatrix();
+   glScalef(2,2,2);
 
-    // peon blanco
-    glTranslatef(0,0,3);
-    material_blanco.activarMaterial();
-    peon.draw(face,mode_view,n);
+      glPushMatrix();
+         glScalef(10,10,10);
+         glTranslatef(3.5,1.4,-3);
+         // Peon madera
+         material_madera.activarMaterial();
+         peon.draw(face,mode_view,n);
 
-    // peon negro
-    glTranslatef(0,0,3);
-    material_negro.activarMaterial();
-    peon.draw(face,mode_view,n);
+         // peon blanco
+         glTranslatef(0,0,3);
+         material_blanco.activarMaterial();
+         peon.draw(face,mode_view,n);
 
-  glPopMatrix();
+         // peon negro
+         glTranslatef(0,0,3);
+         material_negro.activarMaterial();
+         peon.draw(face,mode_view,n);
 
-  glPushMatrix();
-    glScalef(50,50,50);
-    material_cuerpo.activarMaterial();
-    cuerpo_lata.draw(face,mode_view,n);
+      glPopMatrix();
 
-    //Tapa y base
-    material_metalico.activarMaterial();
-    tapa_lata.draw(face,mode_view,n);
-    base_lata.draw(face,mode_view,n);
-  glPopMatrix();
+      glPushMatrix();
+         glScalef(50,50,50);
+         material_cuerpo.activarMaterial();
+         cuerpo_lata.draw(face,mode_view,n);
+
+         //Tapa y base
+         material_metalico.activarMaterial();
+         tapa_lata.draw(face,mode_view,n);
+         base_lata.draw(face,mode_view,n);
+      glPopMatrix();
+
+   glPopMatrix();
 }
