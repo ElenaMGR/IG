@@ -193,22 +193,50 @@ void Obj3D::generarNormalesVertices(){
       ny=mesh.normalesCaras[i+1];
       nz=mesh.normalesCaras[i+2];
 
-      mesh.normalesVertices[(mesh.triangulos[i]*3)] = nx + mesh.normalesCaras[(mesh.triangulos[i])];
-      mesh.normalesVertices[(mesh.triangulos[i]*3)+1] = ny + mesh.normalesCaras[(mesh.triangulos[i])+1];
-      mesh.normalesVertices[(mesh.triangulos[i]*3)+2] = nz + mesh.normalesCaras[(mesh.triangulos[i])+2];
+      mesh.normalesVertices[(mesh.triangulos[i]*3)] += nx;
+      mesh.normalesVertices[(mesh.triangulos[i]*3)+1] += ny;
+      mesh.normalesVertices[(mesh.triangulos[i]*3)+2] += nz;
 
-      mesh.normalesVertices[(mesh.triangulos[i+1]*3)] = nx + mesh.normalesCaras[(mesh.triangulos[i+1])];
-      mesh.normalesVertices[(mesh.triangulos[i+1]*3)+1] = ny + mesh.normalesCaras[(mesh.triangulos[i+1])+1];
-      mesh.normalesVertices[(mesh.triangulos[i+1]*3)+2] = nz + mesh.normalesCaras[(mesh.triangulos[i+1])+2];
+      mesh.normalesVertices[(mesh.triangulos[i+1]*3)] += nx;
+      mesh.normalesVertices[(mesh.triangulos[i+1]*3)+1] += ny;
+      mesh.normalesVertices[(mesh.triangulos[i+1]*3)+2] += nz;
 
-      mesh.normalesVertices[(mesh.triangulos[i+2]*3)] = nx + mesh.normalesCaras[(mesh.triangulos[i+2])];
-      mesh.normalesVertices[(mesh.triangulos[i+2]*3)+1] = ny + mesh.normalesCaras[(mesh.triangulos[i+2])+1];
-      mesh.normalesVertices[(mesh.triangulos[i+2]*3)+2] = nz + mesh.normalesCaras[(mesh.triangulos[i+2])+2];
+      mesh.normalesVertices[(mesh.triangulos[i+2]*3)] += nx;
+      mesh.normalesVertices[(mesh.triangulos[i+2]*3)+1] += ny;
+      mesh.normalesVertices[(mesh.triangulos[i+2]*3)+2] += nz;
 
    }
 
    // Normalización
    for (int i=0; i < mesh.normalesVertices.size(); i+=3){
       normalizar(mesh.normalesVertices[i],mesh.normalesVertices[i+1],mesh.normalesVertices[i+2]);
+   }
+}
+
+void Obj3D::generarCoordenadasTexturaRev(int repeticiones, int vertices){
+   mesh.mapaTexturas.clear();
+   mesh.mapaTexturas.resize(mesh.vertices.size());
+   double Si,Tj;
+	vector<GLfloat> distancias;
+	double distancia = 0;
+
+	// Calculo el vector con las distancias entre todos los vertices del perfil
+	distancias.push_back(0);
+	for (int i = 1; i < vertices; i++) {
+      // Distancia entre un punto y el siguiente
+		distancia += sqrt((mesh.vertices[i] - mesh.vertices[i + 3]) * (mesh.vertices[i] - mesh.vertices[i + 3]) +
+				(mesh.vertices[i + 1] - mesh.vertices[i + 3 +1]) * (mesh.vertices[i + 1] - mesh.vertices[i + 3 + 1]) +
+				(mesh.vertices[i + 2] - mesh.vertices[i + 3 + 2]) * (mesh.vertices[i + 2] - mesh.vertices[i + 3 + 2])	);
+		distancias.push_back(distancia);
+   }
+
+   for(int i=0; i < repeticiones; i++){
+   Si = i / (repeticiones - 1);
+
+      for (int j = 0; j<vertices; j++) {
+		   Tj = 1 - distancias.at(j) / distancias.back();
+			mesh.mapaTexturas.push_back(make_pair(Si, Tj));
+		}
+
    }
 }

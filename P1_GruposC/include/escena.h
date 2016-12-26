@@ -10,6 +10,7 @@
 #include "cilindro.h"
 #include "movil.h"
 #include "luz.h"
+#include "escenaP4.h"
 #include <iostream>
 
 using namespace std;
@@ -30,6 +31,7 @@ ObjRevolucion objRevolucion;
 Cilindro cilindro;
 Movil movil;
 Luz luz;
+EscenaP4 escenaPractica4;
 
 //Variables de control
 GLenum modo;

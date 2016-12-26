@@ -17,6 +17,7 @@ struct Malla {
    vector<GLfloat> colorPares;
    vector<GLfloat> normalesCaras;
    vector<GLfloat> normalesVertices;
+   vector<pair<GLfloat, GLfloat>> mapaTexturas;
 };
 
 class Obj3D {
@@ -30,6 +31,7 @@ public:
    void asignarColor(float r, float g, float b);
    void generarNormalesCaras();
    void generarNormalesVertices();
+   void generarCoordenadasTexturaRev(int repeticiones, int vertices);
 
 protected:
    void setMalla(vector<GLfloat> v, vector<GLuint> t);

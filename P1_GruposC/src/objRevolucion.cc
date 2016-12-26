@@ -118,6 +118,8 @@ void ObjRevolucion::createGeometry(int repeticiones, bool tapa, bool base, bool 
    Obj3D::setMalla(vertices,triangulos);
    if (escalado)
       centrarEscalar();
+
+   generarCoordenadasTexturaRev(repeticiones,v.size());
 }
 
 

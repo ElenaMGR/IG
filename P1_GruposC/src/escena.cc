@@ -48,7 +48,9 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 void Escena::draw_objects() {
    if (practica==3){
       movil.draw(GL_FRONT_AND_BACK, modo, ajedrez);
-   }else{
+   }else if (practica==4){
+      escenaPractica4.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+   }else {
       obj3D.draw(GL_FRONT_AND_BACK, modo, ajedrez);
    }
 
@@ -157,11 +159,6 @@ void Escena::inicializarPractica(){
       objRevolucion.createGeometry(rev,tapa,base,true);
    }
 
-   else if (practica==4){
-      objPly.leerPLY("beethoven");
-      objPly.createGeometry(true);
-      obj3D = objPly;
-   }
 }
 
 void Escena::mostrarMenu(){
