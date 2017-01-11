@@ -158,7 +158,7 @@ void Obj3D::generarNormalesCaras(){
       //Cáculo la normal de a y b
       nx = ay*bz - az*by;
       ny = az*bx - ax*bz;
-      nz = ax*by - ay*bz;
+      nz = ax*by - ay*bx;
 
       //Normalizamos las normales
       normalizar(nx,ny,nz);

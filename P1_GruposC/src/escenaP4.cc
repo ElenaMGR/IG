@@ -4,7 +4,7 @@ EscenaP4::EscenaP4(){
    //Peon
    peon.leerPLY("peon");
    peon.createGeometry(20,true,true,false);
-   material_madera = Material(1,"./textures/text-madera.bmp",true,Tupla3r(1,0,0),Tupla3r(0,1,0),
+   material_madera = Material(1,"./texturas/text-madera.bmp",true,Tupla3r(1,0,0),Tupla3r(0,1,0),
                Tupla4r(0.5,0.4,0.5,1.0),Tupla4r(0.5,0.2,0.0,1),Tupla4r(0.5,0.2,0.0,1),50);
    material_blanco= Material(2,Tupla4r(0.1,0.1,0.1,1)   ,Tupla4r(1.0,1.0,1.0,1.0),Tupla4r(0.0,0.0,0.0,1),128.0);
    material_negro = Material(3,Tupla4r(0.01,0.01,0.01,1),Tupla4r(0.1,0.1,0.1,1)  ,Tupla4r(0.9,0.9,0.9,1),10.0);
@@ -16,7 +16,7 @@ EscenaP4::EscenaP4(){
 
    base_lata.leerPLY("lata-pinf");
    base_lata.createGeometry(20,true,true,false);
-   material_cuerpo =  Material(9,"./textures/text-lata-1.bmp",true,Tupla3r(1,0,0),Tupla3r(0,1,0),
+   material_cuerpo =  Material(9,"./texturas/text-lata-1.bmp",true,Tupla3r(1,0,0),Tupla3r(0,1,0),
                      Tupla4r(0.2,0.2,0.2,1.0),Tupla4r(0.5,0.5,0.5,1),Tupla4r(0.5,0.5,0.5,1),80);
    material_metalico =Material(5,Tupla4r(0.2,0.2,0.2,1.0),Tupla4r(0.5,0.5,0.5,1),Tupla4r(0.5,0.5,0.5,1),80);
 }

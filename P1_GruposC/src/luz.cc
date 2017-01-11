@@ -14,11 +14,11 @@ void Luz::Inicializarluz(){
    //	 light0.setPosition(posf);
 	setLuz(GL_LIGHT0,lmodel_light,true,posf);
 
-	GLfloat lmodel_light1[3][4] = {{1.0,0.0,0.0,1.0},{1.0,0.0,0.0,1.0},{1.0,0.0,0.0,1.0}};
+	GLfloat lmodel_light1[3][4] = {{1.0,1.0,1.0,1.0},{0.5,0.5,0.5,1.0},{0.0,0.0,0.0,1.0}};
 	GLfloat posf1[4] = {100,100,0,1.0};
 	GLfloat posf2[4] = {-100,100,0,0.0};
 	//setLuz(GL_LIGHT1,lmodel_light1,true,posf1);
-	//setLuz(GL_LIGHT2,lmodel_light1,true,posf2);
+	setLuz(GL_LIGHT2,lmodel_light1,true,posf2);
 
 }
 
