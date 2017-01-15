@@ -12,6 +12,8 @@
 #include "luz.h"
 #include "escenaP4.h"
 #include <iostream>
+#include "camara.h"
+#include "lata.h"
 
 using namespace std;
 
@@ -27,11 +29,15 @@ Cubo cubo;
 Octaedro octaedro;
 Obj3D obj3D;
 ObjPLY objPly;
-ObjRevolucion objRevolucion;
+ObjRevolucion objRevolucion, peon;
 Cilindro cilindro;
 Movil movil;
 Luz luz;
 EscenaP4 escenaPractica4;
+Camara camara1,camara2,camara3;
+Camara camaras[3];
+int camaraActiva;
+Lata lata;
 
 //Variables de control
 GLenum modo;
@@ -51,7 +57,14 @@ int anima2=0;
 int anima3=0;
 int anima4=0;
 
-int practica=4;
+int practica=5;
+
+GLdouble posx, posy, posz;
+int xant,yant;
+
+int MOVIENDO_CAMARA_FIRSTPERSON = 0;
+int MODO_EXAMINAR = 1;
+int estadoRaton = -1;
 
 // variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;
@@ -82,7 +95,7 @@ private:
 	void inicializarPractica();
 
 public:
-     Escena();
+   Escena();
 	void inicializar(int UI_window_width,int UI_window_height);
 	void redimensionar(int newWidth,int newHeight) ;
 
@@ -93,6 +106,11 @@ public:
 	int teclaPulsada(unsigned char Tecla1,int x,int y) ;
 	void teclaEspecial(int Tecla1,int x,int y);
 	void animar();
+
+	void ratonMovido(int x,int y);
+   void clickRaton(int boton,int estado,int x,int y);
+	void dibujaSeleccion();
+	void pick(int x,int y);
 
 
 };

@@ -18,7 +18,8 @@ Escena::Escena(){
     ajedrez = false;
     tapa=true;
     base=true;
-    practica = 4;
+    practica = 5;
+    mostrarMenu();
 }
 
 void Escena::inicializar(int UI_window_width,int UI_window_height) {
@@ -28,15 +29,50 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 	glEnable(GL_DEPTH_TEST);	// se habilita el z-bufer
    glEnable (GL_CULL_FACE);
 
-   if (practica==4){
+   Width=UI_window_width/10;
+	Height=UI_window_height/10;
+
+   if (practica==4 || practica==5){
       luz.enableLuz(true);
       luz.Inicializarluz();
    }
 
+   if (practica==5){
+      objPly.leerPLY("eg07"); objPly.createGeometry(true) ;
+      peon.leerPLY("peon");
+      peon.createGeometry(20,true,true,false);
+
+      //Camaras
+      GLdouble lente[6] = {-Width,Width,-Height,Height,Front_plane,Back_plane};
+
+      // frente
+      camara1.setPositionEye(0,0,200);
+      camara1.setPositionAt(0,0,0);
+      camara1.setPositionUp(0,1,0);
+      // alzado
+      camara2.setPositionEye(0,200,0);
+      camara2.setPositionAt(0,0,0);
+      camara2.setPositionUp(0,0,-1);
+      // Perfil
+      camara3.setPositionEye(200,0,0);
+      camara3.setPositionAt(0,0,0);
+      camara3.setPositionUp(0,1,0);
+
+      camara1.setLente(lente);
+      camara2.setLente(lente);
+      camara3.setLente(lente);
+
+      camara1.setPerspectiva(true); // perspectiva
+      camara2.setPerspectiva(true); // perspectiva
+      camara3.setPerspectiva(false); // Ortogonal
+      camaras[0] = camara1;
+      camaras[1] = camara2;
+      camaras[2] = camara3;
+      camaraActiva = 0; //por defecto se activa la camara1
+      cout << "Iniciada camara"<< endl;
+   }
 
 	this->change_projection();
-	Width=UI_window_width/10;
-	Height=UI_window_height/10;
 	glViewport(0,0,UI_window_width,UI_window_height);
 
 }
@@ -50,6 +86,26 @@ void Escena::draw_objects() {
       movil.draw(GL_FRONT_AND_BACK, modo, ajedrez);
    }else if (practica==4){
       escenaPractica4.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+   }else if (practica==5){
+      modo=GL_FILL;
+      //escenaPractica4.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+      lata.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+      glPushMatrix();
+         glTranslatef(-130,20,0);
+         objPly.draw(GL_FRONT_AND_BACK, modo, ajedrez);
+      glPopMatrix();
+      glPushMatrix();
+      glScalef(2,2,2);
+         glPushMatrix();
+            glScalef(10,10,10);
+            glTranslatef(3.5,1.4,-3);
+            peon.draw(GL_FRONT_AND_BACK,modo,ajedrez);
+            glTranslatef(0,0,3);
+            peon.draw(GL_FRONT_AND_BACK,modo,ajedrez);
+            glTranslatef(0,0,3);
+            peon.draw(GL_FRONT_AND_BACK,modo,ajedrez);
+         glPopMatrix();
+      glPopMatrix();
    }else {
       obj3D.draw(GL_FRONT_AND_BACK, modo, ajedrez);
    }
@@ -80,6 +136,7 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
       case '2': practica=2; cout<<"Elegida pŕactica 2"<<endl; mostrarMenu(); inicializarPractica(); break;
       case '3': practica=3; cout<<"Elegida pŕactica 3"<<endl; mostrarMenu(); inicializarPractica(); break;
       case '4': practica=4; cout<<"Elegida pŕactica 4"<<endl; mostrarMenu(); inicializarPractica(); break;
+      case '5': practica=5; cout<<"Elegida pŕactica 5"<<endl; mostrarMenu(); inicializarPractica(); break;
 
       //Opciones comunes a todas las prácaracteristicas:
       case 'L': modo = GL_LINE; ajedrez = false; break;
@@ -142,6 +199,48 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
       }
    }
 
+   else if (practica==5){
+      switch (toupper(Tecla1)) {
+         case 'W':
+            if (camaraActiva==0) camaras[camaraActiva].moverEye(0,0,-1);
+            else if (camaraActiva==1) camaras[camaraActiva].moverEye(0,-1,0);
+            else if (camaraActiva==2) camaras[camaraActiva].moverEye(-1,0,0);
+         break;
+         case 'A':
+            if (camaraActiva==0) camaras[camaraActiva].moverEye(-1,0,0);
+            else if (camaraActiva==1) camaras[camaraActiva].moverEye(-1,0,0);
+            else if (camaraActiva==2) camaras[camaraActiva].moverEye(0,0,1);
+         break;
+         case 'S':
+            if (camaraActiva==0) camaras[camaraActiva].moverEye(0,0,1);
+            else if (camaraActiva==1) camaras[camaraActiva].moverEye(0,1,0);
+            else if (camaraActiva==2) camaras[camaraActiva].moverEye(1,0,0);
+         break;
+         case 'D':
+            if (camaraActiva==0) camaras[camaraActiva].moverEye(1,0,0);
+            else if (camaraActiva==1) camaras[camaraActiva].moverEye(1,0,0);
+            else if (camaraActiva==2) camaras[camaraActiva].moverEye(0,0,-1);
+         break;
+         case 'R':
+            if (camaraActiva==0){
+               camaras[camaraActiva].setPositionEye(0,0,200);
+               camaras[camaraActiva].setPositionAt(0,0,0);
+               camaras[camaraActiva].setPositionUp(0,1,0);
+            }
+            else if (camaraActiva==1){
+               camaras[camaraActiva].setPositionEye(0,200,0);
+               camaras[camaraActiva].setPositionAt(0,0,0);
+               camaras[camaraActiva].setPositionUp(0,0,-1);
+            }
+            else if (camaraActiva==2){
+               camaras[camaraActiva].setPositionEye(200,0,0);
+               camaras[camaraActiva].setPositionAt(0,0,0);
+               camaras[camaraActiva].setPositionUp(0,1,0);
+            }
+         break;
+      }
+   }
+
   return 0;
 }
 
@@ -157,6 +256,10 @@ void Escena::inicializarPractica(){
       rev=20;
       objRevolucion.leerPLY("peon");
       objRevolucion.createGeometry(rev,tapa,base,true);
+   }else if (practica==5){
+      objPly.leerPLY("eg07"); objPly.createGeometry(true) ;
+      peon.leerPLY("peon");
+      peon.createGeometry(20,true,true,false);
    }
 
 }
@@ -167,6 +270,7 @@ void Escena::mostrarMenu(){
 	cout<< "2: Práctica 2" <<endl;
 	cout<< "3: Práctica 3" <<endl;
 	cout<< "4: Práctica 4" <<endl;
+   cout<< "5: Práctica 5" <<endl;
 	cout<< "q: salir" <<endl;
 
 
@@ -212,20 +316,36 @@ void Escena::mostrarMenu(){
    	cout<< "M/m: Aumentar/disminuir rotación" <<endl;
    }
 
-
-
+   else if (practica==5){
+      cout<<endl<< "Opciones de la práctica 5: " <<endl;
+   	cout<< "F1: activar camara1 con vista frente" <<endl;
+   	cout<< "F2: activar camara2 con vista alzado" <<endl;
+   	cout<< "F3: activar camara3 con vista perfil ortogonal" <<endl;
+      cout<< "W: avanzar" <<endl;
+   	cout<< "S: retroceder" <<endl;
+   	cout<< "A: desplazamiento a la izquierda" <<endl;
+      cout<< "D: desplazamiento a la derecha:" <<endl;
+      cout<< "R: reiniciar posición" <<endl;
+   }
 }
 
 
 void Escena::teclaEspecial(int Tecla1,int x,int y) {
-switch (Tecla1){
-	case GLUT_KEY_LEFT:Observer_angle_y--;break;
-	case GLUT_KEY_RIGHT:Observer_angle_y++;break;
-	case GLUT_KEY_UP:Observer_angle_x--;break;
-	case GLUT_KEY_DOWN:Observer_angle_x++;break;
-	case GLUT_KEY_PAGE_UP:Observer_distance*=1.2;break;
-	case GLUT_KEY_PAGE_DOWN:Observer_distance/=1.2;break;
+   switch (Tecla1){
+   	case GLUT_KEY_LEFT:Observer_angle_y--;break;
+   	case GLUT_KEY_RIGHT:Observer_angle_y++;break;
+   	case GLUT_KEY_UP:Observer_angle_x--;break;
+   	case GLUT_KEY_DOWN:Observer_angle_x++;break;
+   	case GLUT_KEY_PAGE_UP:Observer_distance*=1.2;break;
+   	case GLUT_KEY_PAGE_DOWN:Observer_distance/=1.2;break;
 	}
+   if (practica==5){
+      switch (Tecla1) {
+         case GLUT_KEY_F1: camaraActiva=0;break;
+         case GLUT_KEY_F2: camaraActiva=1;break;
+         case GLUT_KEY_F3: camaraActiva=2;break;
+      }
+   }
 
 	std::cout << Observer_distance << std::endl;
 }
@@ -236,9 +356,13 @@ switch (Tecla1){
 //***************************************************************************
 
 void Escena::change_projection()  {
-glMatrixMode(GL_PROJECTION);
-glLoadIdentity();
-glFrustum(-Width,Width,-Height,Height,Front_plane,Back_plane);
+   if (practica==5){
+      camaras[camaraActiva].setProyeccion();
+   }else{
+      glMatrixMode(GL_PROJECTION);
+      glLoadIdentity();
+      glFrustum(-Width,Width,-Height,Height,Front_plane,Back_plane);
+   }
 }
 
 
@@ -258,12 +382,16 @@ glViewport(0,0,newWidth,newHeight);
 
 void Escena::change_observer() {
 
-// posicion del observador
-glMatrixMode(GL_MODELVIEW);
-glLoadIdentity();
-glTranslatef(0,0,-Observer_distance);
-glRotatef(Observer_angle_x,1,0,0);
-glRotatef(Observer_angle_y,0,1,0);
+   // posicion del observador
+   glMatrixMode(GL_MODELVIEW);
+   glLoadIdentity();
+   if (practica==5){
+      camaras[camaraActiva].setLookAt();
+   }else{
+      glTranslatef(0,0,-Observer_distance);
+      glRotatef(Observer_angle_x,1,0,0);
+      glRotatef(Observer_angle_y,0,1,0);
+   }
 }
 
 
@@ -306,6 +434,112 @@ void Escena::animar(){
    }
 }
 
+//**************************************************************************
+// Funcion que controla los eventos producidos por el movimiento raton
+//***************************************************************************
+
+void Escena::ratonMovido(int x,int y){
+   if(estadoRaton == MOVIENDO_CAMARA_FIRSTPERSON){
+      x -= xant;
+      y -= yant;
+      camaras[camaraActiva].setPositionAt(x,-y);
+   }else if(estadoRaton == MODO_EXAMINAR){
+      x -= xant;
+      y -= yant;
+      camaras[camaraActiva].setPositionEye(x,-y); //tengo que añadir la z
+   }
+
+}
+
+//**************************************************************************
+// Funcion que controla los eventos producidos por el raton
+//***************************************************************************
+
+void Escena::clickRaton(int boton,int estado,int x,int y){
+   if(boton == GLUT_RIGHT_BUTTON){
+      cout << "Click derecho ";
+      if(estado == GLUT_DOWN){  // Se pulsa el botón, por lo que se entra en el estado "moviendo camara"
+         cout <<"pulsado"<< endl;
+         xant = x;
+         yant = y;
+         if(estadoRaton == -1)
+            estadoRaton = 0;
+      }else{ // Se levanta el botón, por lo que se sale del estado "moviendo camara"
+         cout <<"soltado"<< endl;
+         if(estadoRaton == 0)
+            estadoRaton = -1;
+      }
+   }else if(boton == GLUT_LEFT_BUTTON){
+      cout << "Click izquierdo ";
+      if(estado == GLUT_DOWN){  // Se pulsa el botón
+         if(estadoRaton != 1){
+            dibujaSeleccion();
+            pick(x,y);
+         }
+         cout <<"pulsado"<< endl;
+      }else{
+         xant = x;
+         yant = y;
+         estadoRaton = (estadoRaton==1)?-1:1;  // Si estaba activado lo desactivo y si no estaba activado lo activo
+      }
+   }
+}
+
+
+void Escena::dibujaSeleccion(){
+   glDisable(GL_DITHER); // deshabilitar degradado
+   glDisable(GL_LIGHTING);
+   glDisable(GL_TEXTURE);
+
+   glColor3ub(255,0,0);
+   lata.draw(GL_FRONT_AND_BACK, GL_FILL, ajedrez);
+   glPushMatrix();
+      glTranslatef(-130,20,0);
+      glColor3ub(0,255,0);
+      objPly.draw(GL_FRONT_AND_BACK, GL_FILL, ajedrez);
+   glPopMatrix();
+   glPushMatrix();
+   glScalef(2,2,2);
+      glPushMatrix();
+         glScalef(10,10,10);
+         glTranslatef(3.5,1.4,-3);
+         glColor3ub(0,0,255);
+         peon.draw(GL_FRONT_AND_BACK,GL_FILL,ajedrez);
+         glTranslatef(0,0,3);
+         glColor3ub(255,255,0);
+         peon.draw(GL_FRONT_AND_BACK,GL_FILL,ajedrez);
+         glTranslatef(0,0,3);
+         glColor3ub(0,255,255);
+         peon.draw(GL_FRONT_AND_BACK,GL_FILL,ajedrez);
+      glPopMatrix();
+   glPopMatrix();
+
+   glEnable(GL_DITHER);
+   glEnable(GL_LIGHTING);
+   glEnable(GL_TEXTURE);
+
+}
+
+void Escena::pick(int x,int y){
+   GLint viewport[4];
+   GLubyte pixel[3];
+   Tupla3r centro;
+   glGetIntegerv(GL_VIEWPORT,viewport);
+   glReadPixels(x,viewport[3]-y,1,1,GL_RGB,GL_UNSIGNED_BYTE,(void *) pixel);
+cout<<pixel[0]<<" "<<pixel[1]<<" "<<pixel[2]<<endl;
+   if(pixel[0]==255 && pixel[1]==0 && pixel[2]==0){  // lata
+      //centro = lata.getCentro();
+      cout<<"Seleccionada lata"<<endl;
+   } else if (pixel[0]==0 && pixel[1]==255 && pixel[2]==0){ //objPly
+      cout<<"Seleccionado objeto ply"<<endl;
+   } else if (pixel[0]==0 && pixel[1]==0 && pixel[2]==255){ //peon
+      cout<<"Seleccionado peon derecha"<<endl;
+   }else if (pixel[0]==255 && pixel[1]==255 && pixel[2]==0){ //peon
+      cout<<"Seleccionado peon centro"<<endl;
+   }else if (pixel[0]==0 && pixel[1]==255 && pixel[2]==255){ //peon
+      cout<<"Seleccionado peon izquierda"<<endl;
+   }
+}
 
 
 void Escena::cambiarVelocidadRFigura(int vel){

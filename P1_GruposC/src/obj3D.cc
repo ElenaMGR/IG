@@ -96,7 +96,6 @@ void Obj3D::asignarColorCarasPares(float r, float g, float b){
 }
 
 void Obj3D::centrarEscalar(){
-   float cx,cy,cz;
    //Asingo por defecto el valor del primer vertice
    float minx = mesh.vertices[0] ,maxx = mesh.vertices[0];
    float miny = mesh.vertices[1], maxy = mesh.vertices[1];
@@ -133,6 +132,34 @@ void Obj3D::centrarEscalar(){
       mesh.vertices[i]=mesh.vertices[i]*(90/(maxx-minx));
    }
 
+}
+
+Tupla3r Obj3D::getCentro(){
+   //Asingo por defecto el valor del primer vertice
+   float minx = mesh.vertices[0] ,maxx = mesh.vertices[0];
+   float miny = mesh.vertices[1], maxy = mesh.vertices[1];
+   float minz = mesh.vertices[2], maxz = mesh.vertices[2];
+   //Calculo el cubo envolvente
+   for (int i=0; i<mesh.vertices.size(); i+=3){
+      if (mesh.vertices[i] < minx)
+         minx=mesh.vertices[i];
+      if (mesh.vertices[i] > maxx)
+         maxx=mesh.vertices[i];
+      if (mesh.vertices[i+1] < miny)
+         miny=mesh.vertices[i+1];
+      if (mesh.vertices[i+1] > maxy)
+         maxy=mesh.vertices[i+1];
+      if (mesh.vertices[i+2] < minz)
+         minz=mesh.vertices[i+2];
+      if (mesh.vertices[i+2] > maxz)
+         maxz=mesh.vertices[i+2];
+   }
+   //Calculo el centro del cubo
+   cx=(minx+maxx)/2;
+   cy=(miny+maxy)/2;
+   cz=(minz+maxz)/2;
+
+   return Tupla3r(cx,cy,cz);
 }
 
 void Obj3D::generarNormalesCaras(){

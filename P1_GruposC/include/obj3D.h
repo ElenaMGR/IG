@@ -5,6 +5,7 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include "math.h"
+#include "tuplas.h"
 using namespace std;
 
 struct Malla {
@@ -23,6 +24,7 @@ struct Malla {
 class Obj3D {
 private:
    Malla mesh;
+   float cx,cy,cz;
 public:
    /**
    * Método que dibuja el objeto3D
@@ -32,6 +34,7 @@ public:
    void generarNormalesCaras();
    void generarNormalesVertices();
    void generarCoordenadasTexturaRev(int repeticiones, int vertices);
+   Tupla3r getCentro();
 
 protected:
    void setMalla(vector<GLfloat> v, vector<GLuint> t);

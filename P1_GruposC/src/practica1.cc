@@ -89,19 +89,24 @@ void animar(void) {
 }
 
 //***************************************************************************
-// Funcion llamada para mostrar menú con opciones
-
+// Funcion llamada cuando se produce el evento de clickRaton
 //***************************************************************************
 
-void mostrarMenu() {
-	cout<< "Opciones: " <<endl;
-	cout<< "1: Práctica 1" <<endl;
-	cout<< "2: Práctica 2" <<endl;
-	cout<< "3: Práctica 3" <<endl;
-	cout<< "4: Práctica 4" <<endl;
-	cout<< "q: salir" <<endl;
+void clickRaton(int boton, int estado, int x,int y) {
+  if (escena!=NULL)
+    escena->clickRaton(boton,estado,x,y);
+  glutPostRedisplay();
 }
 
+//***************************************************************************
+// Funcion llamada cuando se produce el evento de mover el raton
+//***************************************************************************
+
+void ratonMovido(int x, int y) {
+  if (escena!=NULL)
+    escena->ratonMovido(x,y);
+  glutPostRedisplay();
+}
 
 //***************************************************************************
 // Programa principal
@@ -129,8 +134,7 @@ glutInitWindowPosition(UI_window_pos_x,UI_window_pos_y);
 glutInitWindowSize(UI_window_width,UI_window_height);
 
 // llamada para crear la ventana, indicando el titulo
-glutCreateWindow("Práctica 4: Elena María Gómez Ríos");
-mostrarMenu();
+glutCreateWindow("Práctica 5: Elena María Gómez Ríos");
 
 // asignación de la funcion llamada "dibujar" al evento de dibujo
 glutDisplayFunc(draw_scene);
@@ -143,6 +147,10 @@ glutSpecialFunc(special_keys);
 
 //asignación de la funcion llamada "idle"
 glutIdleFunc(animar);
+// asignación de la funcion llamada "click_raton" al evento correspondiente
+glutMouseFunc(clickRaton);
+// asignación de la funcion llamada "click_raton" al evento correspondiente
+glutMotionFunc(ratonMovido);
 
 // funcion de inicialización
 escena->inicializar(UI_window_width,UI_window_height);
