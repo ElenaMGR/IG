@@ -1,0 +1,29 @@
+
+Práctica realizada por: Elena María Gómez Ríos
+Grupo: C1
+DNI: 76624656 H
+
+Instrucciones:
+Tecla :  Acción
+
+Q : salir
+
+Opciones Práctica 3
+1: dibujar Práctica3
+2: Rotar todo
+3: Rotar figura
+4: Mover figura
+5: Balanceo
+6: Animar
+
+Opciones de velocidad
+V/v: Aumentar/disminuir balanceo
+B/b: Aumentar/disminuir movimiento de la figura
+N/n: Aumentar/disminuir rotación de la figura
+M/m: Aumentar/disminuir rotación
+
+Visualización
+F : Relleno
+L : Lineas
+P : Puntos
+A : Ajedrez

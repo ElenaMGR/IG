@@ -1,0 +1,6 @@
+File readed
+File readed
+File readed
+File readed
+Error: the file ./PLY/peon.ply.ply cannot be opened
+Error: there is not a ply file open. Stop in line 0
