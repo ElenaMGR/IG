@@ -28,8 +28,8 @@ Tetraedro tetraedro;
 Cubo cubo;
 Octaedro octaedro;
 Obj3D obj3D;
-ObjPLY objPly;
-ObjRevolucion objRevolucion, peon;
+ObjPLY objPly,objPly2;
+ObjRevolucion objRevolucion, peon,peon2;
 Cilindro cilindro;
 Movil movil;
 Luz luz;
@@ -37,7 +37,7 @@ EscenaP4 escenaPractica4;
 Camara camara1,camara2,camara3;
 Camara camaras[3];
 int camaraActiva;
-Lata lata;
+Lata lata,lata2;
 
 //Variables de control
 GLenum modo;

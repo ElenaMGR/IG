@@ -39,8 +39,10 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
 
    if (practica==5){
       objPly.leerPLY("eg07"); objPly.createGeometry(true) ;
+      objPly2=objPly;
       peon.leerPLY("peon");
       peon.createGeometry(20,true,true,false);
+      peon2=peon;
 
       //Camaras
       GLfloat lente[6] = {-Width,Width,-Height,Height,Front_plane,Back_plane};
@@ -496,27 +498,31 @@ void Escena::dibujaSeleccion(){
    glDisable(GL_TEXTURE);
 
    glPushMatrix();
-   glColor3f(1,0,0);
-   //lata.asignarColor(1,0,0);
-   lata.draw(GL_FRONT_AND_BACK, GL_FILL, false);
+   //glColor3f(1,0,0);
+   lata2.asignarColor(1,0,0);
+   lata2.draw(GL_FRONT, GL_FILL, false);
    glPushMatrix();
       glTranslatef(-130,20,0);
-      glColor3f(0,1,0);
-      objPly.draw(GL_FRONT_AND_BACK, GL_FILL, false);
+      //glColor3f(0,1,0);
+      objPly2.asignarColor(0,1,0);
+      objPly2.draw(GL_FRONT, GL_FILL, false);
    glPopMatrix();
    glPushMatrix();
    glScalef(2,2,2);
       glPushMatrix();
          glScalef(10,10,10);
          glTranslatef(3.5,1.4,-3);
-         glColor3f(1,0,1);
-         peon.draw(GL_FRONT_AND_BACK,GL_FILL,false);
+         //glColor3f(0,0,1);
+         peon2.asignarColor(0,0,1);
+         peon2.draw(GL_FRONT,GL_FILL,false);
          glTranslatef(0,0,3);
-         glColor3f(1,1,0);
-         peon.draw(GL_FRONT_AND_BACK,GL_FILL,false);
+         //glColor3f(1,1,0);
+         peon2.asignarColor(1,1,0);
+         peon2.draw(GL_FRONT,GL_FILL,false);
          glTranslatef(0,0,3);
-         glColor3f(0,1,1);
-         peon.draw(GL_FRONT_AND_BACK,GL_FILL,false);
+         //glColor3f(0,1,1);
+         peon2.asignarColor(0,1,1);
+         peon2.draw(GL_FRONT,GL_FILL,false);
       glPopMatrix();
    glPopMatrix();
 
