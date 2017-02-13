@@ -60,9 +60,15 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
       camara3.setPositionAt(0,0,0);
       camara3.setPositionUp(0,1,0);
 
+      //Prueba
+      camara4.setPositionEye(0,0,200);
+      camara4.setPositionAt(0,0,0);
+      camara4.setPositionUp(-0.5,0.5,-0.5);
+
       camara1.setLente(lente);
       camara2.setLente(lente);
       camara3.setLente(lente);
+      camara4.setLente(lente);
 
       camara1.setPerspectiva(true); // perspectiva
       camara2.setPerspectiva(true); // perspectiva
@@ -70,6 +76,7 @@ void Escena::inicializar(int UI_window_width,int UI_window_height) {
       camaras[0] = camara1;
       camaras[1] = camara2;
       camaras[2] = camara3;
+      camaras[3] = camara4;
       camaraActiva = 0; //por defecto se activa la camara1
       cout << "Iniciada camara"<< endl;
    }
@@ -232,6 +239,7 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
                camaras[camaraActiva].setPositionEye(0,0,200);
                camaras[camaraActiva].setPositionAt(0,0,0);
                camaras[camaraActiva].setPositionUp(0,1,0);
+               //camaras[camaraActiva].setPositionUp(0,1,0);
             }
             else if (camaraActiva==1){
                camaras[camaraActiva].setPositionEye(0,200,0);
@@ -242,6 +250,10 @@ int Escena::teclaPulsada(unsigned char Tecla1,int x,int y) {
                camaras[camaraActiva].setPositionEye(200,0,0);
                camaras[camaraActiva].setPositionAt(0,0,0);
                camaras[camaraActiva].setPositionUp(0,1,0);
+            }else if (camaraActiva==3){
+               camaras[camaraActiva].setPositionEye(0,0,200);
+               camaras[camaraActiva].setPositionAt(0,0,0);
+               camaras[camaraActiva].setPositionUp(-0.5,0.5,-0.5);
             }
          break;
       }
@@ -347,9 +359,10 @@ void Escena::teclaEspecial(int Tecla1,int x,int y) {
 	}
    if (practica==5){
       switch (Tecla1) {
-         case GLUT_KEY_F1: camaraActiva=0;break;
-         case GLUT_KEY_F2: camaraActiva=1;break;
-         case GLUT_KEY_F3: camaraActiva=2;break;
+         case GLUT_KEY_F1: camaraActiva=0;change_projection();break;
+         case GLUT_KEY_F2: camaraActiva=1;change_projection();break;
+         case GLUT_KEY_F3: camaraActiva=2;change_projection();break;
+         case GLUT_KEY_F4: camaraActiva=3;change_projection();break;
       }
    }
 
@@ -499,13 +512,15 @@ void Escena::dibujaSeleccion(){
 
    glPushMatrix();
    //glColor3f(1,0,0);
-   lata2.asignarColor(1,0,0);
-   lata2.draw(GL_FRONT, GL_FILL, false);
+   //lata2.asignarColor(1,0,0);
+   lata.asignarColor(1,0,0);
+   lata.draw(GL_FRONT, GL_FILL, false);
    glPushMatrix();
       glTranslatef(-130,20,0);
       //glColor3f(0,1,0);
-      objPly2.asignarColor(0,1,0);
-      objPly2.draw(GL_FRONT, GL_FILL, false);
+      //objPly2.asignarColor(0,1,0);
+      objPly.asignarColor(0,1,0);
+      objPly.draw(GL_FRONT, GL_FILL, false);
    glPopMatrix();
    glPushMatrix();
    glScalef(2,2,2);
@@ -513,16 +528,17 @@ void Escena::dibujaSeleccion(){
          glScalef(10,10,10);
          glTranslatef(3.5,1.4,-3);
          //glColor3f(0,0,1);
-         peon2.asignarColor(0,0,1);
-         peon2.draw(GL_FRONT,GL_FILL,false);
+         //peon2.asignarColor(0,0,1);
+         peon.asignarColor(0,0,1);
+         peon.draw(GL_FRONT,GL_FILL,false);
          glTranslatef(0,0,3);
          //glColor3f(1,1,0);
-         peon2.asignarColor(1,1,0);
-         peon2.draw(GL_FRONT,GL_FILL,false);
+         peon.asignarColor(1,1,0);
+         peon.draw(GL_FRONT,GL_FILL,false);
          glTranslatef(0,0,3);
          //glColor3f(0,1,1);
-         peon2.asignarColor(0,1,1);
-         peon2.draw(GL_FRONT,GL_FILL,false);
+         peon.asignarColor(0,1,1);
+         peon.draw(GL_FRONT,GL_FILL,false);
       glPopMatrix();
    glPopMatrix();
 
@@ -545,7 +561,7 @@ bool Escena::pick(int x,int y){
       cout<<"Seleccionada lata"<<endl;
       objeto=true;
    } else if (pixel[0]==0 && pixel[1]==1 && pixel[2]==0){ //objPly
-      cout<<"Seleccionado objeto ply"<<endl;
+      cout<<"Seleccionado objeto ply eg07"<<endl;
       objeto=true;
    } else if (pixel[0]==0 && pixel[1]==0 && pixel[2]==1){ //peon
       cout<<"Seleccionado peon derecha"<<endl;

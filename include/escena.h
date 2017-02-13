@@ -34,8 +34,8 @@ Cilindro cilindro;
 Movil movil;
 Luz luz;
 EscenaP4 escenaPractica4;
-Camara camara1,camara2,camara3;
-Camara camaras[3];
+Camara camara1,camara2,camara3,camara4;
+Camara camaras[4];
 int camaraActiva;
 Lata lata,lata2;
 
